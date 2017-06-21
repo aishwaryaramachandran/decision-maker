@@ -43,8 +43,8 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-app.get("/results", (req, res) => {
-  res.render("results")
+app.get("/polls", (req, res) => {
+  res.render("polls");
 })
 
 app.listen(PORT, () => {
