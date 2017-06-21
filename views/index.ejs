@@ -9,9 +9,24 @@
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
-  </head>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <nav>
+    <span class="header">Decision Maker(working name)</span>
+  </nav>
 
-  <body>
-    <h1>Hello World!</h1>
+  <section id="decision-container">
+    <h2>Feeling Indecisive?</h2>
+    <form method="post" action="/">
+      <label for="email">Enter your Email:</label>
+      <input type="text" name="email" placeholder="your.email@email.com">
+      <label for="text">Enter a Title:</label>
+      <input type="text" name="title" placeholder="Title">
+      <label for="text">Describe your Conundrum</label>
+      <textarea type="text" name="description" placeholder="What's the deal?"></textarea>
+      <input type="submit" value="Submit">
+
+  </section>
   </body>
 </html>
