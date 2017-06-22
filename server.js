@@ -74,14 +74,14 @@ app.post("/create", (req, res) =>{
   // Kinex function to insert newPoll
 console.log(urls);
 console.log(newPoll);
-  res.status(200).send("success")
+  res.status(200).send('["success"]')
   return;
 });
 
 // Returns URL
 app.get("/create", (req, res) => {
   console.log(urls);
-  res.status(200).send("success")
+  res.status(200).send('["success"]')
   return;
 })
 
