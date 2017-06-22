@@ -1,20 +1,17 @@
 /*#conundrum-container form Stylesheet */
 
 #conundrum-container {
-  display: none;
   border-width: 1px;
   border-color: grey;
   border-style: solid;
   border-radius: 10px;
   background-color: #eee;
-}
-
-#conundrum-container {
   padding-left: 15px;
   padding-right: 10px;
   padding-bottom: 10px;
   width: 400px;
-  margin: 0 auto;
+  margin: 70px auto;
+  line-height: 30px;
 }
 
 #conundrum-container:after {
