@@ -32,20 +32,56 @@ app.use("/styles", sass({
 }));
 app.use(express.static("public"));
 
+// Generates Code for adminCode and shareCode
+function generateRandomString() {
+  let result = '';
+  let chars = "abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  for (let i = 6; i > 0; --i) {
+    result += chars[Math.round(Math.random() * (chars.length - 1))];
+  }
+  return result;
+}
+
 // Home page
 app.get("/", (req, res) => {
   res.render("index");
 });
 
+// Staging area for URLS
+const urls = {
+  myUrl: "",
+  voteUrl: ""
+};
 // Create new Conundrum
 app.post("/create", (req, res) =>{
-  res.status(200)
+  const admin = generateRandomString();
+  const share = generateRandomString();
+  urls.myUrl = `http://localhost:8080/mypoll/${admin}`;
+  urls.voteUrl = `http://localhost:8080/mypoll/${share}`;
+  const newPoll = {
+    email: req.body.email,
+    title: req.body.title,
+    description: req.body.description,
+    options: [req.body.optionA,
+              req.body.optionB,
+              req.body.optionC,
+              req.body.optionD
+              ],
+    adminCode: admin,
+    shareCode: share
+  };
+
+  // Kinex function to insert newPoll
+console.log(urls);
+console.log(newPoll);
+  res.status(200).send("success")
   return;
 });
 
 // Returns URL
 app.get("/create", (req, res) => {
-  res.status(200)
+  console.log(urls);
+  res.status(200).send("success")
   return;
 })
 
