@@ -1,0 +1,57 @@
+/*#conundrum-container form Stylesheet */
+
+#conundrum-container {
+  display: none;
+  border-width: 1px;
+  border-color: grey;
+  border-style: solid;
+  border-radius: 10px;
+  background-color: #eee;
+}
+
+#conundrum-container {
+  padding-left: 15px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  width: 400px;
+  margin: 0 auto;
+}
+
+#conundrum-container:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+#conundrum-container h2 {
+  border-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: grey;
+}
+
+#conundrum-container textarea {
+  width: 350px;
+  float: left;
+  padding: 5px;
+}
+
+#conundrum-container input{
+  margin-top: 5px;
+  background-color: #eeeeee;
+  border-color: grey;
+  border-radius: 10px;
+}
+
+#conundrum-container input:hover {
+  border-width: 2.5px;
+}
+.counter {
+  float: right;
+  font-size: 75%;
+  font-style: italic;
+}
+
+/* Used by composer-char-counter.js when maxChar has been exceeded*/
+.over-max {
+  color: red;
+}
