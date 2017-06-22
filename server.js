@@ -52,7 +52,7 @@ const urls = {
   myUrl: "",
   voteUrl: ""
 };
-// Create new Conundrum
+// Create new Conundrum (Need to check for errors)
 app.post("/create", (req, res) =>{
   const admin = generateRandomString();
   const share = generateRandomString();
@@ -74,16 +74,45 @@ app.post("/create", (req, res) =>{
   // Kinex function to insert newPoll
 console.log(urls);
 console.log(newPoll);
-  res.status(200).send('["success"]')
+  res.status(200)
   return;
 });
 
 // Returns URL
 app.get("/create", (req, res) => {
   console.log(urls);
-  res.status(200).send('["success"]')
+  res.status(200).json(urls);
+  return;
+});
+
+// Gets poll results for admin
+app.get("/mypoll/:id", (res, req) => {
+  const admin = req.params.id;
+  // Need knex function that uses :id(adminCode) to retrieve relevant data
+  res.status(200);
+  return;
+});
+
+// Posts submitted vote data to database
+app.post("/vote/:id", (req, res) => {
+  const newVote = {
+    shareID: req.params.id,
+    name: req.body.name,
+    order: `${req.body.optionA}${req.body.optionB}${req.body.optionC}${req.body.optionD}`
+  };
+
+  //Need knex function that uses :id(shareCode) to post data to correct table/row
+  res.status(200);
   return;
 })
+
+// Gets vote page for voter
+app.get("/vote/:id", (req, res) => {
+  voter = req.params.id;
+  // Need knex function that uses :id(shareCode) to retrieve relevant data
+  res.status(200);
+  return;
+});
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
