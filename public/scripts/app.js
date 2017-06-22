@@ -19,27 +19,27 @@ $(function() {
   }
 
   function getURL () {
-     console.log("chris2")
-      $.ajax({
-          url: '/create',
-          method: 'GET',
-          dataType: 'json'
-      }).done(function() {
-        let urlData = 'www.google.ca';
-        renderURls(urlData);
-      });
+    $.ajax({
+        url: '/create',
+        method: 'GET',
+        dataType: 'json'
+    }).done(function(response) {
+      renderURLs(response);
+    }).catch(function(err) {
+      console.log('Error message: ', err);
+    });
   }
  
   $('#newPoll').on('submit', function(event) {
     event.preventDefault();
+    console.log("chris")
     $.ajax({
       method: 'POST',
       url: '/create',
       data: $(this).serialize()
     }).done(function () {
-      console.log("chris")
       $('#conundrum-container').slideUp();
-      getURL()
+      getURL();
     })
   })
 });
