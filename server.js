@@ -74,7 +74,7 @@ app.post("/create", (req, res) =>{
   // Kinex function to insert newPoll
 console.log(urls);
 console.log(newPoll);
-  res.status(200)
+  res.status(200).send("success")
   return;
 });
 
@@ -89,7 +89,7 @@ app.get("/create", (req, res) => {
 app.get("/mypoll/:id", (res, req) => {
   const admin = req.params.id;
   // Need knex function that uses :id(adminCode) to retrieve relevant data
-  res.status(200);
+  res.status(200).send("success");
   return;
 });
 
@@ -97,12 +97,16 @@ app.get("/mypoll/:id", (res, req) => {
 app.post("/vote/:id", (req, res) => {
   const newVote = {
     shareID: req.params.id,
-    name: req.body.name,
-    order: `${req.body.optionA}${req.body.optionB}${req.body.optionC}${req.body.optionD}`
+    name: req.body.name
+    rankA: req.body.rankA,
+    rankB: req.body.rankB,
+    rankC: req.body.rankC,
+    rankD: req.body.rankD
   };
 
   //Need knex function that uses :id(shareCode) to post data to correct table/row
-  res.status(200);
+  //order: `${req.body.optionA}${req.body.optionB}${req.body.optionC}${req.body.optionD}`
+  res.status(200).send("success");
   return;
 })
 
@@ -110,7 +114,7 @@ app.post("/vote/:id", (req, res) => {
 app.get("/vote/:id", (req, res) => {
   voter = req.params.id;
   // Need knex function that uses :id(shareCode) to retrieve relevant data
-  res.status(200);
+  res.status(200).send("success");
   return;
 });
 
