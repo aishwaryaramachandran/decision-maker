@@ -1,24 +1,33 @@
 $(function() {
 
-  
-  // function generatePolls() {
-  //   //get the data and call renderTweets Function
-  //   $.ajax({
-  //     method: 'GET',
-  //     url: '/',
-  //     dataType: 'json'
-  //   }).done(function (poll) {
-  //     createPoll(poll);
-  //   });
-  // }
+  function createVoteSection(poll) {
+    const html = `<p class="voteTitle">Title : ${poll.title}</p>
+      <p><strong>Description</strong></p>
+      <p class="voteDescription">${poll.description}</p>
+      <form id='voteForm' method="POST" action="/vote">
+        <label for="email">Enter your Name: </label>
+        <input type="text" name="voteName" placeholder="your.email@email.com" class="voteInput"><br>
+        ${poll.options[0]} <input type="radio" name="voteOptionA" value="1" checked class=""><br>
+        ${poll.options[1]} <input type="radio" name="voteOptionB" value="2"><br>
+        ${poll.options[2]} <input type="radio" name="voteOptionC" value="other"><br>
+        ${poll.options[3]} <input type="radio" name="voteOptionD" value="other"><br>
+        <button type="submit" value="Submit">Submit</button>
+        <button type="submit" value="Submit">Refresh</button>
+      </form>`;
+      return html;
+  }
+
   function renderURLs(urlData) {
+    //show two links URL
+    //first link : for user // second link : for creator
     const $message = $('p');
-    const urlAddress = $('p');
+    const $urlAddress = $('p');
     $message.text("you created the poll successfully :D");
-    urlAddress.prepend(urlData);
+    $urlAddress.prepend(urlData);
   }
 
   function getURL () {
+    //GET ajax and return renderURls function
     $.ajax({
         url: '/create',
         method: 'GET',
@@ -31,8 +40,8 @@ $(function() {
   }
  
   $('#newPoll').on('submit', function(event) {
+    //POST ajax, return GETURL and slideup event
     event.preventDefault();
-    console.log("chris")
     $.ajax({
       method: 'POST',
       url: '/create',
@@ -40,39 +49,6 @@ $(function() {
     }).done(function () {
       $('#conundrum-container').slideUp();
       getURL();
-    })
-  })
+    });
+  });
 });
-
-
-
-
-// $('.tweet-compose').on('click', function(event){
-//     $('.new-tweet').slideToggle();
-//     $('textarea').focus();
-
-//   })
-
-
-
-
-
-// //Load Form Data
-// //Return URL
-
-
-
-
-
-// function loadPoll(){
-//     $.ajax({
-//       url: '/polls',
-//       type: 'GET',
-//       dataType: 'json',
-//       success: function (data) {
-//         renderPoll(data);
-//       }
-//     });
-//   }
-
-// loadPoll();

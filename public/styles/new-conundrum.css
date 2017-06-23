@@ -48,7 +48,39 @@
   font-style: italic;
 }
 
-/* Used by composer-char-counter.js when maxChar has been exceeded*/
-.over-max {
-  color: red;
+#voteSection {
+  border: 1px solid grey;
+  border-radius: 10px;
+  width: 400px;
+  margin: 70px auto 0 auto;
+  line-height: 30px;
+  padding: 20px;
+}
+
+.voteTitle {
+  border-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: grey;
+  font-weight: bold;
+}
+
+#voteSection .voteInput {
+  margin-top: 5px;
+  background-color: #eeeeee;
+  border-color: grey;
+  border-radius: 10px;
+}
+
+#voteSection .voteDescription {
+  border: 1px solid black;
+  border-radius: 3px;
+  background-color: white;
+}
+
+#voteSection .voteInput {
+  
+}
+
+#voteSection .voteInput {
+  
 }

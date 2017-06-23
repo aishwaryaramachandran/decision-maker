@@ -49,6 +49,19 @@ app.get("/create", (req, res) => {
   return;
 })
 
+
+app.post("/vote", (req, res) =>{
+  const test = req.body.voteOptionA;
+  console.log(test);
+});
+
+
+app.get("/vote", (req, res) => {
+  res.render("vote")
+})
+
+
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
+
