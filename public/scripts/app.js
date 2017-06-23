@@ -1,26 +1,11 @@
 
-// $('.tweet-compose').on('click', function(event){
-//     $('.new-tweet').slideToggle();
-//     $('textarea').focus();
-
-//   })
-
-
-
-
-
-// //Load Form Data
-// //Return URL
-
-// function loadPoll(){
-//     $.ajax({
-//       url: '/polls',
-//       type: 'GET',
-//       dataType: 'json',
-//       success: function (data) {
-//         renderPoll(data);
-//       }
-//     });
-//   }
-
-// loadPoll();
+$(() => {
+  $.ajax({
+    method: "GET",
+    url: "/api/users"
+  }).done((users) => {
+    for(user of users) {
+      $("<div>").text(user.name).appendTo($("body"));
+    }
+  });;
+});
