@@ -1,5 +1,15 @@
 $(function() {
 
+$(() => {
+  $.ajax({
+    method: "GET",
+    url: "/api/users"
+  }).done((users) => {
+    for(user of users) {
+      $("<div>").text(user.name).appendTo($("body"));
+    }
+  });;
+});
   function renderURLs(urlData) {
     $('<a/>', {
     class: 'adminUrl',
@@ -63,3 +73,4 @@ $(function() {
     });
   });
 });
+>>>>>>> 54f6531e9c3a84013f3f43c460882b9d78b74d56
