@@ -97,7 +97,7 @@ app.get("/mypoll/:id", (res, req) => {
 app.post("/vote/:id", (req, res) => {
   const newVote = {
     shareID: req.params.id,
-    name: req.body.name
+    name: req.body.name,
     rankA: req.body.rankA,
     rankB: req.body.rankB,
     rankC: req.body.rankC,
