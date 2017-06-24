@@ -18,15 +18,43 @@
 
     <body>
     <%- include('partials/navbar')%>
-    <section id="result-message">
-     <div>
-        Here are you results: 
-        <ol>
-            <% polls.rank.forEach(function(value){ %>
-            console.log(value);
-            <li> <%=value%> </li>
-            <% }); %>
-        </ol>
+    <div id='result'>
+        <section id="results-message">
+        <p class="resultTitle"><%= polls.title %></p>
+        <p><strong>Description: </strong></p>
+         <p class="resultDescription"><%= polls.description %></p>
+        </section>
+        <section id="result-rank">
+        <div>
+            Here are you results: 
+            <ol>
+                <% polls.rank.forEach(function(value){ %>
+                console.log(value);
+                <li> <%=value%> </li>
+                <% }); %>
+            </ol>
+        <button id="update"type="button">Update</button>
+        </div>
+        </section>
+        <section id="update-form">
+            <form id='newPoll' method="post" action="/mypoll/create">
+            <label for="email">Enter your Email:</label>
+            <input type="text" name="email" placeholder="your.email@email.com"><br>
+            <label for="text">Enter a Title:</label>
+            <input type="text" name="title" placeholder="Title"><br>
+            <label for="text">Describe your Conundrum</label>
+            <textarea type="text" name="description" placeholder="What's the deal?"></textarea><br>
+            <label for="text">Option A:</label>
+            <input type="text" name="optionA" placeholder="Option A"><br>
+            <label for="text">Option B:</label>
+            <input type="text" name="optionB" placeholder="Option B"><br>
+            <label for="text">Option C:</label>
+            <input type="text" name="optionC" placeholder="Option C"><br>
+            <label for="text">Option D:</label>
+            <input type="text" name="optionD" placeholder="Option D"><br>
+            <input type="submit" value="Submit">
+            </form>
+        </section>
     </div>
     <%- include('partials/footer')%>
     </body>
