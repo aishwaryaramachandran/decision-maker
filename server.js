@@ -71,16 +71,27 @@ app.post("/create", (req, res) =>{
     shareCode: share
   };
 
+  var api_key = 'key-e0b22302447902e45e7a531ed87e241c';
+  var domain = 'sandbox35917ab6f63a495f95fa2f7cf334a6f1.mailgun.org';
+  var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
+  
+  var data = {
+    from: '<postmaster@sandbox35917ab6f63a495f95fa2f7cf334a6f1.mailgun.org>',
+    to: 'pachopa0320@gmail.com',
+    subject: req.body.title,
+    text: req.body.description
+  };
+  
+  mailgun.messages().send(data, function (error, body) {
+    console.log(body);
+  });
   // Kinex function to insert newPoll
-console.log(urls);
-console.log(newPoll);
   res.status(200).send("success")
   return;
 });
 
 // Returns URL
 app.get("/create", (req, res) => {
-  console.log(urls);
   res.status(200).json(urls);
   return;
 });
@@ -97,7 +108,7 @@ app.get("/mypoll/:id", (res, req) => {
 app.post("/vote/:id", (req, res) => {
   const newVote = {
     shareID: req.params.id,
-    name: req.body.name
+    name: req.body.name,
     rankA: req.body.rankA,
     rankB: req.body.rankB,
     rankC: req.body.rankC,

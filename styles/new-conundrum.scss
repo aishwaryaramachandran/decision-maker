@@ -1,4 +1,5 @@
 /*#conundrum-container form Stylesheet */
+
 #conundrum-container {
   border-width: 1px;
   border-color: grey;
@@ -31,7 +32,7 @@
   padding: 5px;
 }
 
-#conundrum-container input {
+#conundrum-container input{
   margin-top: 5px;
   background-color: #eeeeee;
   border-color: grey;
@@ -41,7 +42,6 @@
 #conundrum-container input:hover {
   border-width: 2.5px;
 }
-
 .counter {
   float: right;
   font-size: 75%;
@@ -124,7 +124,6 @@
 .voteEmpty {
   height: 5px;
 }
-
 #drag1 {
   margin-left: 70px;
 }
@@ -140,7 +139,6 @@
 #drag4 {
   margin-left: 70px;
 }
-
 /*.voteButton {
 
 }*/
