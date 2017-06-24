@@ -8,21 +8,18 @@
   padding-right: 2em;
   padding-top: 0;
   padding-bottom: 0;
-  z-index: 99999999;
-}
+  z-index: 99999999; }
 
 #nav-bar .logo {
   padding-top: 10px;
   height: 80px;
   padding-right: 10px;
-  float: left;
-}
+  float: left; }
 
 #nav-bar .header {
   font-size: 200%;
   line-height: 80px;
-  float: left;
-}
+  float: left; }
 
 .poll-compose {
   height: 60px;
@@ -34,20 +31,16 @@
   border-radius: 7px;
   box-shadow: 1px 1px black;
   background-color: #E9FFE9;
-  color: black;
-}
+  color: black; }
 
 .poll-compose:hover {
   opacity: 1;
   box-shadow: 1px 1px black;
-  background-color: #E9FFE9;
-}
+  background-color: #E9FFE9; }
 
 .poll-compose:click {
-  opacity: 1;
-}
+  opacity: 1; }
 
 .poll-compose img {
   height: 15px;
-  width: 15px;
-}
+  width: 15px; }
