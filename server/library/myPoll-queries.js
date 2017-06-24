@@ -11,7 +11,6 @@ const obj = {};
         .insert({
           title: object.title,
           description: object.description,
-          status: object.status,
           admin_code: object.adminCode,
           share_code: object.shareCode,
           creator_id: parseFloat(id)

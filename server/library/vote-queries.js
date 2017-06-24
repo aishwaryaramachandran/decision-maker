@@ -19,6 +19,38 @@ module.exports = (knex) => {
       })
     }
 
+    voteQueries.pollOptions = function(poll) {
+    return knex('options')
+      .where("poll_id", poll.id);
+  }
+
+
+  voteQueries.getVote = function (shareCode){
+      return new Promise((resolve, reject) => {
+        let data = { poll: null, options: null };
+        knex('polls')
+          .where("share_code", shareCode)
+          .then( (rows) => {
+            if (!rows.length){
+              throw new Error(`No poll found for share code: ${shareCode}`)
+            }
+            const poll = rows[0];
+
+            data.poll = poll;
+
+            pollOptions(poll).map((option) => {
+              let optionData = {option: option};
+            })
+            .then(()=> resolve(data))
+            .catch(reject);
+          })
+          .catch(reject)
+      })
+    }
+  return voteQueries;
+}
+
+
 
 
   return voteQueries;
