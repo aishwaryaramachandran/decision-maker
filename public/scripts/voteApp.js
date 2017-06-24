@@ -17,16 +17,18 @@ $( function() {
     const optionList = '<li><div draggable="true" data-id="<%= options.id %>">${ options.text }</div></li>';
     $(ul).append(optionList);
   } 
-  //
-  $(() => $.ajax({
+  function makeTemlate() {
+    //ajax get
+    $.ajax({
       method: 'GET',
       url: '/vote/:id',
       data: "json"
     }).done(function () {
       makeRankingAndOptions(options);
-    })
-  );
+    });
+  }
   function submitSuccess()  {
+    //show the text
       $('<span/>', {
         text: "Thank you for voting!"
       }).appendTo('#voteSection')
