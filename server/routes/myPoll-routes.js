@@ -67,6 +67,7 @@ module.exports = (knex) => {
 
     getMyPoll(admin)
     .then( (data) => {
+      console.log(json(data));
       res.status(201).json(data)
     })
     .catch((err) => {

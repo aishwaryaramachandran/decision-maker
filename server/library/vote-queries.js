@@ -7,7 +7,7 @@ module.exports = (knex) => {
 
     return knex('vote')
       .insert({name: obj.name})
-      returning('id')
+      .returning('id')
       .then( (id) => {
         return Promise.all(obj.ranks.map( function(value, index) {
           return knex('vote_options')
