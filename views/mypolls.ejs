@@ -18,7 +18,16 @@
 
     <body>
     <%- include('partials/navbar')%>
-     
+    <section id="result-message">
+     <div>
+        Here are you results: 
+        <ol>
+            <% polls.rank.forEach(function(value){ %>
+            console.log(value);
+            <li> <%=value%> </li>
+            <% }); %>
+        </ol>
+    </div>
     <%- include('partials/footer')%>
     </body>
 </html>
