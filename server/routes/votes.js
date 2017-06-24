@@ -3,9 +3,21 @@
 const express = require('express');
 const router  = express.Router();
 
-module.exports = (knex) => {
+//route to get vote page that uses :id(shareCode) to retrieve relevant data
 
-  router.post("/", (req, res) => {
+ function getVotes(knex) => {
+  router.get("/vote/id", (req, res) =>{
+    knex('votes').returning('').
+
+
+  });
+  return router;
+ }
+
+
+
+ function postVotes(knex) => {
+  router.post("/vote/id", (req, res) => {
     knex('votes')
       .returning("id")
       .insert("users")
@@ -16,6 +28,11 @@ module.exports = (knex) => {
   });
   return router;
 }
+
+
+
+
+module.exports =
 
 
 
