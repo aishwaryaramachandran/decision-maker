@@ -27,7 +27,7 @@ module.exports = (knex) => {
 
   voteQueries.getVote = function (shareCode){
       return new Promise((resolve, reject) => {
-        let data = { poll: null, options: null };
+        const data = { poll: {}, options: [] };
         knex('polls')
           .where("share_code", shareCode)
           .then( (rows) => {
@@ -38,8 +38,9 @@ module.exports = (knex) => {
 
             data.poll = poll;
 
-            pollOptions(poll).map((option) => {
-              let optionData = {option: option};
+            pollOptions(poll).map((option, index) => {
+            let optionData = { option: option};
+            data.options[index] = optionData;
             })
             .then(()=> resolve(data))
             .catch(reject);

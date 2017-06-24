@@ -37,7 +37,7 @@ module.exports = (knex) => {
     const voter = req.params.id;
     getVote(voter)
     .then( (data) => {
-      console.log(json(data));
+      console.log(data);
       res.status(200).json(data);
     })
     .catch((err) => {

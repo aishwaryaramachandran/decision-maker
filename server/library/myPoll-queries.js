@@ -39,12 +39,13 @@ const obj = {};
   }
 
 
-  obj.getMyPoll = function (code){
+
+obj.getMyPoll = function (code){
   // POLL FUNCTION TO RETREIVE DB DATA FOR A POLL THAT WAS CREATED (admin_code)
     return new Promise((resolve, reject) => {
       let data = { poll: null, options: [] };
 
-      knex('polls')
+     knex('polls')
         .where("admin_code", code)
         .then( (rows) => {
           if (!rows.length){
@@ -52,11 +53,13 @@ const obj = {};
           }
           const poll = rows[0];
 
-          data.poll = poll;
+         data.poll = poll;
 
-          pollOptions(poll).map((option) => {
-            let optionData = { option: option, vote_options: [] };
-
+         pollOptions(poll).map((option, index) => {
+             let optionData = {};
+            optionData[`option${index}`] = option;
+            optionData.vote_options = [];
+            data.options[index] = optionData;
             optionVotes(option).map((option_vote) => {
               optionData.vote_options.push(option_vote);
             })

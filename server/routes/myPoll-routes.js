@@ -62,12 +62,10 @@ module.exports = (knex) => {
   });
 
   // Gets poll results for admin
-  router.get("/:id", (res, req) => {
+  router.get("/:id", (req, res) => {
     const admin = req.params.id;
-
     getMyPoll(admin)
     .then( (data) => {
-      console.log(json(data));
       res.status(200).json(data)
     })
     .catch((err) => {
