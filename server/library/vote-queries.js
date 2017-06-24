@@ -12,10 +12,10 @@ module.exports = (knex) => {
         return Promise.all(obj.ranks.map( function(value, index) {
           return knex('vote_options')
           .insert({rank: index + 1,
-                   vote_id: id,
+                   vote_id: ParseFloat(id),
                    option_id: value
                   })
-        }))
+          }))
       })
     }
 
