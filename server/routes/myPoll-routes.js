@@ -28,7 +28,7 @@ module.exports = (knex) => {
     const admin = generateRandomString();
     const share = generateRandomString();
     urls.myUrl = `http://localhost:8080/mypoll/${admin}`;
-    urls.voteUrl = `http://localhost:8080/mypoll/${share}`;
+    urls.voteUrl = `http://localhost:8080/vote/${share}`;
 
     const newPoll = {
       email: req.body.email,
@@ -64,8 +64,16 @@ module.exports = (knex) => {
   // Gets poll results for admin
   router.get("/:id", (res, req) => {
     const admin = req.params.id;
-    // Need knex function that uses :id(adminCode) to retrieve relevant data
-    res.status(200).send("success");
+
+    getMyPoll(admin)
+    .then( (data) => {
+      res.status(201).json(data)
+    })
+    .catch((err) => {
+      console.log(err)
+      res.status(400).send("error")
+    })
+
     return;
   });
 

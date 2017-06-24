@@ -12,9 +12,9 @@ const obj = {};
           title: object.title,
           description: object.description,
           status: object.status,
-          admin_code:object.admin_code,
-          share_code:object.share_code,
-          creator_id: id
+          admin_code: object.adminCode,
+          share_code: object.shareCode,
+          creator_id: parseFloat(id)
         })
         .returning('id')
     })
@@ -23,7 +23,7 @@ const obj = {};
           return knex('options')
             .insert({
               description: item,
-              poll_id:id
+              poll_id: parseFloat(id)
             })
       }))
     })
