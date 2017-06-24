@@ -1,53 +1,51 @@
-#nav-bar {
+#nav-bar{
   position: inherit;
   height: 120px;
-  width: 100%;
-  background-color: #5AC;
+  width: 100% ;
+  background-color:#5AC;
   color: #e8fdff;
   padding-left: 2em;
   padding-right: 2em;
   padding-top: 0;
   padding-bottom: 0;
   z-index: 99999999;
-}
 
-#nav-bar .logo {
+}
+#nav-bar .logo{
   padding-top: 10px;
-  height: 80px;
+  height:80px;
   padding-right: 10px;
   float: left;
 }
 
-#nav-bar .header {
+#nav-bar .header{
   font-size: 200%;
-  line-height: 80px;
+  line-height: 80px ;
   float: left;
 }
-
-.poll-compose {
+.poll-compose{
   height: 60px;
   width: 100px;
-  margin-top: 10px;
+  margin-top:10px;
   margin-bottom: 10px;
   opacity: 0.7;
   float: right;
   border-radius: 7px;
   box-shadow: 1px 1px black;
   background-color: #E9FFE9;
-  color: black;
+  color:black;
 }
 
-.poll-compose:hover {
+.poll-compose:hover{
   opacity: 1;
   box-shadow: 1px 1px black;
   background-color: #E9FFE9;
 }
 
-.poll-compose:click {
+.poll-compose:click{
   opacity: 1;
 }
-
-.poll-compose img {
-  height: 15px;
+.poll-compose img{
+  height:15px;
   width: 15px;
 }

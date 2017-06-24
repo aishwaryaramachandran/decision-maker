@@ -1,11 +1,12 @@
 //Routes for Polls
+"use strict";
 const express = require('express');
-const pollFunctions = require("library/myPoll-queries.js");
+const pollFunctions = require("../library/myPoll-queries.js");
 
 module.exports = (knex) => {
   const router = express.Router();
 
-  const {} = pollFunctions(knex);
+  const {createMyPoll, getMyPoll} = pollFunctions(knex);
 
   // Generates Code for adminCode and shareCode
   function generateRandomString() {
@@ -23,11 +24,12 @@ module.exports = (knex) => {
     voteUrl: ""
   };
   // Create new Conundrum (Need to check for errors)
-  app.post("/create", (req, res) =>{
+  router.post("/create", (req, res) =>{
     const admin = generateRandomString();
     const share = generateRandomString();
     urls.myUrl = `http://localhost:8080/mypoll/${admin}`;
-    urls.voteUrl = `http://localhost:8080/mypoll/${share}`;
+    urls.voteUrl = `http://localhost:8080/vote/${share}`;
+
     const newPoll = {
       email: req.body.email,
       title: req.body.title,
@@ -41,37 +43,39 @@ module.exports = (knex) => {
       shareCode: share
     };
 
-    // createMyPoll(newpoll)
-    // .then( () => {
-    //   res.status(201).send()
-    // })
-    // .catch((err) => {
-    //   res.status(400).send("error")
-    // })
+    createMyPoll(newPoll)
+    .then( () => {
+      res.status(201).send()
+    })
+    .catch((err) => {
+      console.log(err)
+      res.status(400).send("error")
+    })
 
-
-    // Kinex function to insert newPoll
-  console.log(urls);
-  console.log(newPoll);
-
-  //erase when un-commenting promise
-  res.status(201).send()
 
   });
 
   // Returns URL
-  app.get("/create", (req, res) => {
-    console.log(urls);
+  router.get("/create", (req, res) => {
     res.status(200).json(urls);
     return;
   });
 
   // Gets poll results for admin
-  app.get("/:id", (res, req) => {
+  router.get("/:id", (res, req) => {
     const admin = req.params.id;
-    // Need knex function that uses :id(adminCode) to retrieve relevant data
-    res.status(200).send("success");
+
+    getMyPoll(admin)
+    .then( (data) => {
+      res.status(201).json(data)
+    })
+    .catch((err) => {
+      console.log(err)
+      res.status(400).send("error")
+    })
+
     return;
+  });
 
   return router;
-  });
+}

@@ -7,21 +7,51 @@ module.exports = (knex) => {
 
     return knex('vote')
       .insert({name: obj.name})
-      returning('id')
+      .returning('id')
       .then( (id) => {
-        const optionId =
-          knex.select('id')
-          .from('polls')
-          .where(share_code, shareCode)
-        return Promise.all(obj.ranks.map( function(value) {
+        return Promise.all(obj.ranks.map( function(value, index) {
           return knex('vote_options')
-          .insert({rank: value,
-                   vote_id: id,
-                   option_id: optionId
+          .insert({rank: index + 1,
+                   vote_id: ParseFloat(id),
+                   option_id: value
                   })
-        }))
+          }))
       })
     }
+
+    voteQueries.pollOptions = function(poll) {
+    return knex('options')
+      .where("poll_id", poll.id);
+  }
+
+
+  voteQueries.getVote = function (shareCode){
+      return new Promise((resolve, reject) => {
+        let data = { poll: null, options: null };
+        knex('polls')
+          .where("share_code", shareCode)
+          .then( (rows) => {
+            if (!rows.length){
+              throw new Error(`No poll found for share code: ${shareCode}`)
+            }
+            const poll = rows[0];
+
+            data.poll = poll;
+
+            pollOptions(poll).map((option) => {
+              let optionData = {option: option};
+            })
+            .then(()=> resolve(data))
+            .catch(reject);
+          })
+          .catch(reject)
+      })
+    }
+  return voteQueries;
+}
+
+
+
 
   return voteQueries;
 }

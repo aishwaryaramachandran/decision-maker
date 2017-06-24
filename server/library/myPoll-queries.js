@@ -11,10 +11,9 @@ const obj = {};
         .insert({
           title: object.title,
           description: object.description,
-          status: object.status,
-          admin_code:object.admin_code,
-          share_code:object.share_code,
-          creator_id: id
+          admin_code: object.adminCode,
+          share_code: object.shareCode,
+          creator_id: parseFloat(id)
         })
         .returning('id')
     })
@@ -23,18 +22,18 @@ const obj = {};
           return knex('options')
             .insert({
               description: item,
-              poll_id:id
+              poll_id: parseFloat(id)
             })
       }))
     })
   }
 
-  obj.optionVotes =function (option) {
+  function optionVotes (option) {
     return knex('vote_options')
       .where("option_id", option.id);
   }
 
-  obj.pollOptions = function(poll) {
+  function pollOptions (poll) {
     return knex('options')
       .where("poll_id", poll.id);
   }
@@ -55,10 +54,10 @@ const obj = {};
 
           data.poll = poll;
 
-          obj.pollOptions(poll).map((option) => {
+          pollOptions(poll).map((option) => {
             let optionData = { option: option, vote_options: [] };
 
-            obj.optionVotes(option).map((option_vote) => {
+            optionVotes(option).map((option_vote) => {
               optionData.vote_options.push(option_vote);
             })
             .then(() => resolve(data))

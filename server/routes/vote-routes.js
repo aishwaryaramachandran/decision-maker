@@ -1,7 +1,8 @@
 // Routes for votes
+"use strict";
 
 const express = require('express');
-const voteFunctions = require("library/vote-queries.js");
+const voteFunctions = require("../library/vote-queries.js");
 
 module.exports = (knex) => {
   const router = express.Router();
@@ -9,7 +10,7 @@ module.exports = (knex) => {
   const {} = voteFunctions(knex);
 
   // Posts submitted vote data to database
-  app.post("/:id", (req, res) => {
+  router.post("/:id", (req, res) => {
     const newVote = {
       shareCode: req.params.id,
       name: req.body.name,
@@ -18,20 +19,22 @@ module.exports = (knex) => {
               req.body.rankC,
               req.body.rankD
               ]
+
     };
 
     //Need knex function that uses :id(shareCode) to post data to correct table/row
+
     //order: `${req.body.optionA}${req.body.optionB}${req.body.optionC}${req.body.optionD}`
     res.status(200).send("success");
     return;
   });
 
   // Gets vote page for voter
-  app.get("/:id", (req, res) => {
+  router.get("/:id", (req, res) => {
     voter = req.params.id;
     // Need knex function that uses :id(shareCode) to retrieve relevant data
     res.status(200).send("success");
     return;
-
-    return router;
   });
+  return router;
+}
