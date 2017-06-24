@@ -72,4 +72,6 @@ module.exports = (knex) => {
     // Need knex function that uses :id(adminCode) to retrieve relevant data
     res.status(200).send("success");
     return;
+
+  return router;
   });
