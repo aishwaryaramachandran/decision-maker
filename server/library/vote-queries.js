@@ -19,7 +19,7 @@ module.exports = (knex) => {
       })
     }
 
-    voteQueries.pollOptions = function(poll) {
+    function pollOptions (poll) {
     return knex('options')
       .where("poll_id", poll.id);
   }
@@ -49,4 +49,3 @@ module.exports = (knex) => {
     }
   return voteQueries;
 }
-

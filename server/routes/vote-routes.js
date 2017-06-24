@@ -22,19 +22,28 @@ module.exports = (knex) => {
 
     };
 
-    //Need knex function that uses :id(shareCode) to post data to correct table/row
-
-    //order: `${req.body.optionA}${req.body.optionB}${req.body.optionC}${req.body.optionD}`
-    res.status(200).send("success");
-    return;
+    postVote(newVote)
+    .then( () => {
+      res.status(201).send()
+    })
+    .catch((err) => {
+      console.log(err)
+      res.status(400).send("error")
+    })
   });
 
   // Gets vote page for voter
   router.get("/:id", (req, res) => {
     voter = req.params.id;
-    // Need knex function that uses :id(shareCode) to retrieve relevant data
-    res.status(200).send("success");
-    return;
+    getVote(voter)
+    .then( (data) => {
+      console.log(json(data));
+      res.status(200).json(data);
+    })
+    .catch((err) => {
+      console.log(err)
+      res.status(400).send("error")
+    })
   });
   return router;
 }
