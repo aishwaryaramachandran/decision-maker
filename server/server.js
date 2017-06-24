@@ -9,13 +9,13 @@ const bodyParser  = require("body-parser");
 const sass        = require("node-sass-middleware");
 const app         = express();
 
-const knexConfig  = require("./knexfile");
+const knexConfig  = require("../knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 
-const pollRoutes = require("/routes/myPoll-routes.js")(knex);
-const voteRoutes = require("/routes/vote-routes.js")(knex);
+const pollRoutes = require("./routes/myPoll-routes.js")(knex);
+const voteRoutes = require("./routes/vote-routes.js")(knex);
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.

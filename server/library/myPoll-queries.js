@@ -29,12 +29,12 @@ const obj = {};
     })
   }
 
-  obj.optionVotes =function (option) {
+  function optionVotes (option) {
     return knex('vote_options')
       .where("option_id", option.id);
   }
 
-  obj.pollOptions = function(poll) {
+  function pollOptions (poll) {
     return knex('options')
       .where("poll_id", poll.id);
   }
@@ -55,10 +55,10 @@ const obj = {};
 
           data.poll = poll;
 
-          obj.pollOptions(poll).map((option) => {
+          pollOptions(poll).map((option) => {
             let optionData = { option: option, vote_options: [] };
 
-            obj.optionVotes(option).map((option_vote) => {
+            optionVotes(option).map((option_vote) => {
               optionData.vote_options.push(option_vote);
             })
             .then(() => resolve(data))

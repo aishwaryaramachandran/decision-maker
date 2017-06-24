@@ -1,16 +1,5 @@
 $(function() {
 
-$(() => {
-  $.ajax({
-    method: "GET",
-    url: "/api/users"
-  }).done((users) => {
-    for(user of users) {
-      $("<div>").text(user.name).appendTo($("body"));
-    }
-  });
-});
-
   function renderURLs(urlData) {
     $('<a>', {
     class: 'adminUrl',
@@ -45,7 +34,7 @@ $(() => {
   function getURL () {
     //GET ajax and return renderURls function
     $.ajax({
-        url: '/create',
+        url: '/mypoll/create',
         method: 'GET',
         dataType: 'json'
     }).done(function(response) {
@@ -60,7 +49,7 @@ $(() => {
     event.preventDefault();
     $.ajax({
       method: 'POST',
-      url: '/create',
+      url: '/mypoll/create',
       data: $(this).serialize()
     }).done(function () {
       $('#conundrum-container').slideUp();
