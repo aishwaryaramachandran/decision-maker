@@ -48,7 +48,7 @@ module.exports = (knex) => {
       })
     }
   return voteQueries;
-}
+  }
 
 
 
