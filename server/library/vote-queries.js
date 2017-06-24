@@ -24,10 +24,9 @@ module.exports = (knex) => {
       .where("poll_id", poll.id);
   }
 
-
   voteQueries.getVote = function (shareCode){
       return new Promise((resolve, reject) => {
-        let data = { poll: null, options: null };
+        const data = { poll: {}, options: [] };
         knex('polls')
           .where("share_code", shareCode)
           .then( (rows) => {
@@ -35,11 +34,11 @@ module.exports = (knex) => {
               throw new Error(`No poll found for share code: ${shareCode}`)
             }
             const poll = rows[0];
-
             data.poll = poll;
-
-            pollOptions(poll).map((option) => {
-              let optionData = {option: option};
+            pollOptions(poll).map((option, index) => {
+            let optionData = {};
+            optionData[`option${index}`] = option;
+            data.options[index] = optionData;
             })
             .then(()=> resolve(data))
             .catch(reject);
