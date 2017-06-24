@@ -34,17 +34,21 @@ module.exports = (knex) => {
       email: req.body.email,
       title: req.body.title,
       description: req.body.description,
-      options: req.body.options,
+      options: [req.body.optionA,
+                req.body.optionB,
+                req.body.optionC,
+                req.body.optionD
+                ],
       adminCode: admin,
       shareCode: share
     };
 
     createMyPoll(newPoll)
     .then( () => {
-      console.log(newPoll);
       res.status(201).send()
     })
     .catch((err) => {
+      console.log(err)
       res.status(400).send("error")
     })
 
