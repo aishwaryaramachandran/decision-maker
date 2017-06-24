@@ -1,22 +1,12 @@
 $(function() {
 
-  $(() => {
-    $.ajax({
-      method: "GET",
-      url: "/api/users"
-    }).done((users) => {
-      for(user of users) {
-        $("<div>").text(user.name).appendTo($("body"));
-      }
-    });
-  });
   function renderURLs(urlData) {
-    $('<a/>', {
+    $('<a>', {
       class: 'adminUrl',
       href: urlData.myUrl,
       text: 'Here is your new Poll!'
     }).appendTo('body');
-    $('<a/>', {
+      $('<a>', {
       class: 'voterUrl',
       href: urlData.voteUrl,
       text: 'Give this link to your voters!'
@@ -27,7 +17,7 @@ $(function() {
     //GET ajax and return renderURls function
     console.log("chris2")
     $.ajax({
-        url: '/create',
+        url: '/mypoll/create',
         method: 'GET',
         dataType: 'json'
     }).done(function(response) {
@@ -42,7 +32,7 @@ $(function() {
     event.preventDefault();
     $.ajax({
       method: 'POST',
-      url: '/create',
+      url: '/mypoll/create',
       data: $(this).serialize()
     }).done(function () {
       $('#conundrum-container').slideUp();
@@ -50,4 +40,3 @@ $(function() {
     });
   });
 });
-
