@@ -8,8 +8,9 @@ $(function() {
 
     function getResults() {
         $.ajax({
-            url: '/create',
-            method: 'GET'
+            url: '/polls/:id',
+            method: 'GET',
+            data: 'json'
         }).done()
     }
 
