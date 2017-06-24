@@ -50,8 +50,3 @@ module.exports = (knex) => {
   return voteQueries;
 }
 
-
-
-
-  return voteQueries;
-}

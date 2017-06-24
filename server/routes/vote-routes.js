@@ -7,7 +7,7 @@ const voteFunctions = require("../library/vote-queries.js");
 module.exports = (knex) => {
   const router = express.Router();
 
-  const {} = voteFunctions(knex);
+  const {postVote, getVote} = voteFunctions(knex);
 
   // Posts submitted vote data to database
   router.post("/:id", (req, res) => {
