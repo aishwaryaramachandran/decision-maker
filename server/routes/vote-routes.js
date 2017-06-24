@@ -38,7 +38,7 @@ module.exports = (knex) => {
     getVote(voter)
     .then( (data) => {
       console.log(data);
-      res.status(200).json(data);
+      res.status(200).render('vote', data);
     })
     .catch((err) => {
       console.log(err)
