@@ -51,10 +51,9 @@ module.exports = (knex) => {
       console.log(err)
       res.status(400).send("error")
     })
-
-
   });
 
+  
   // Returns URL
   router.get("/create", (req, res) => {
     res.status(200).json(urls);

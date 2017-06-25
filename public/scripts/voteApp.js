@@ -1,5 +1,5 @@
 $( function() {
-  
+  console.log("hello")
   function makeRankingAndOptions(options) {
   //subject change 
   //check the options and change the options.length
@@ -17,16 +17,22 @@ $( function() {
     const optionList = '<li><div draggable="true" data-id="<%= options.id %>">${ options.text }</div></li>';
     $(ul).append(optionList);
   } 
-  function makeTemlate() {
+  function makeTemplate() {
     //ajax get
+    console.log("chris")
     $.ajax({
       method: 'GET',
       url: '/vote/:id',
       data: "json"
-    }).done(function () {
+    }).done(function (options) {
+      console.log(options);
       makeRankingAndOptions(options);
+    }).catch(err => {
+      console.log("err", err);
     });
   }
+  makeTemplate()
+
   function submitSuccess()  {
     //show the text
       $('<span/>', {
@@ -45,10 +51,8 @@ $( function() {
       submitSuccess();
       });
   });
-
   $('#reset').on('reset', function(event) {
     //refresh the page
       $('#voteForm').reset();
     })
-
 });
