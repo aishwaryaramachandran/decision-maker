@@ -13,11 +13,11 @@ module.exports = (knex) => {
   router.post("/:id", (req, res) => {
     const newVote = {
       shareCode: req.params.id,
-      name: req.body.name,
-      ranks: [req.body.rankA,
-              req.body.rankB,
-              req.body.rankC,
-              req.body.rankD
+      name: req.body.voteName,
+      ranks: [req.body.rankings1,
+              req.body.rankings2,
+              req.body.rankings3,
+              req.body.rankings4
               ]
 
     };
