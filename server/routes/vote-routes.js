@@ -35,13 +35,17 @@ module.exports = (knex) => {
   // Gets vote page for voter
   router.get("/:id", (req, res) => {
     const voter = req.params.id;
+    console.log(voter);
     getVote(voter)
     .then((data) => {
       res.render('vote', data);
 
+    .then( (data) => {
+      console.log(data);
+      res.status(200).render("vote", data);
     })
     .catch((err) => {
-      console.log(err)
+      console.log(err);
       res.status(400).send("error")
     })
   });
