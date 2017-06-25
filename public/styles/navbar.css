@@ -1,3 +1,20 @@
+* {
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.navbarImg {
+  width: 170px;
+  height: 170px;
+  vertical-align: middle;
+  float: none;
+  margin-left: 200px;
+}
+
+.navbarText {
+  color: white;
+  float: left;
+}
+
 #nav-bar {
   position: inherit;
   height: 120px;
@@ -27,15 +44,13 @@
 .poll-compose {
   height: 60px;
   width: 100px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 20px;
   opacity: 0.7;
   float: right;
   border-radius: 7px;
-  box-shadow: 1px 1px black;
-  background-color: #E9FFE9;
   color: black;
 }
+
 
 .poll-compose:hover {
   opacity: 1;
@@ -52,3 +67,7 @@
   width: 15px;
 }
 
+.navbar-inverse .navbar-text {
+  color: white;
+  font-size: 50px;
+}
