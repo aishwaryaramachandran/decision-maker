@@ -3,21 +3,16 @@ const obj = {};
 
   obj.createMyPoll = function (object){
   //POLL FUNCTION TO CREATE A DB ENTRY FOR A NEW POLL
-  return knex('creators')
-    .insert({email: object.email})
-    .returning('id')
-    .then(function (id) {
       return knex('polls')
         .insert({
+          email:object.email,
           title: object.title,
           description: object.description,
           admin_code: object.adminCode,
           share_code: object.shareCode,
-          creator_id: parseFloat(id)
         })
         .returning('id')
-    })
-    .then(function(id){
+        .then(function(id){
       return Promise.all(object.options.map((item) => {
           return knex('options')
             .insert({
