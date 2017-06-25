@@ -5,14 +5,14 @@ module.exports = (knex) => {
 
   voteQueries.postVote = function (obj) {
 
-    return knex('vote')
+    return knex('votes')
       .insert({name: obj.name})
       .returning('id')
       .then( (id) => {
         return Promise.all(obj.ranks.map( function(value, index) {
           return knex('vote_options')
           .insert({rank: index + 1,
-                   vote_id: ParseFloat(id),
+                   vote_id: parseFloat(id),
                    option_id: value
                   })
           }))
@@ -30,14 +30,11 @@ module.exports = (knex) => {
         knex('polls')
           .where("share_code", shareCode)
           .then( (rows) => {
-            if (!rows.length){
-              throw new Error(`No poll found for share code: ${shareCode}`)
-            }
             const poll = rows[0];
             data.poll = poll;
             pollOptions(poll).map((option, index) => {
             let optionData = {};
-            optionData[`option${index}`] = option;
+            optionData.option = option;
             data.options[index] = optionData;
             })
             .then(()=> resolve(data))
