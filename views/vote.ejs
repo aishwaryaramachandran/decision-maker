@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,700,700i" rel="stylesheet">
     <!--App CSS-->
     <link rel="stylesheet" href="/styles/main.css" type="text/css" />
-    
+
     <!--External JS-->
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/voteApp.js"></script>
@@ -20,21 +20,21 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    
+
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
   <body>
     <%- include('partials/navbar') %>
     <section id="voteSection">
-      <p class="voteTitle"><%= polls.title %></p>
+      <p class="voteTitle"><%= poll.title %></p>
       <p><strong>Description: </strong></p>
-      <p class="voteDescription"><%= polls.description %></p>
+      <p class="voteDescription"><%= poll.description %></p>
       <form id='voteForm' method="POST" action="/vote/:id">
         <label for="voteName">Enter your Name:</label>
         <input id="voteName" type="text" name="voteName" class="voteInput">
         <ol>
-          
+
         </ol>
         <ul>
 
