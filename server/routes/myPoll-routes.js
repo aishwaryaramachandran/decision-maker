@@ -24,7 +24,7 @@ module.exports = (knex) => {
     voteUrl: ""
   };
   // Create new Conundrum (Need to check for errors)
-  router.post("/create", (req, res) =>{
+  router.post("/create", (req, res) => {
     const admin = generateRandomString();
     const share = generateRandomString();
     urls.myUrl = `http://localhost:8080/mypoll/${admin}`;
@@ -58,24 +58,21 @@ module.exports = (knex) => {
   // Returns URL
   router.get("/create", (req, res) => {
     res.status(200).json(urls);
-    return;
   });
 
   // Gets poll results for admin
-  router.get("/:id", (res, req) => {
+  router.get("/:id", (req, res) => {
     const admin = req.params.id;
 
     getMyPoll(admin)
     .then( (data) => {
-      console.log(json(data));
-      res.status(200).json(data)
+      res.status(200).render("mypolls", data)
     })
     .catch((err) => {
       console.log(err)
       res.status(400).send("error")
     })
 
-    return;
   });
 
   return router;
