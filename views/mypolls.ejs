@@ -18,29 +18,24 @@
 
    <body>
     <%- include('partials/navbar')%>
-<<<<<<< HEAD
     <div id='result'>
         <section id="results-message">
-        <p class="resultTitle"><%= polls.title %></p>
+        <p class="resultTitle"><%= poll.title %></p>
         <p><strong>Description: </strong></p>
-         <p class="resultDescription"><%= polls.description %></p>
+         <p class="resultDescription"><%= poll.description %></p>
         </section>
         <section id="result-rank">
         <div>
             Here are you results: 
             <ol>
-                <% polls.rank.forEach(function(value){ %>
-                console.log(value);
-                <li> <%=value%> </li>
+                <% options.forEach(function(value){ %>
+                <li> <%=value.description %> </li>
                 <% }); %>
             </ol>
         <button id="update"type="button">Update</button>
         </div>
         </section>
     </div>
-=======
-        
->>>>>>> master
     <%- include('partials/footer')%>
    
     </body>
