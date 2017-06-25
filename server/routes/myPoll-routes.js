@@ -64,7 +64,8 @@ module.exports = (knex) => {
     const admin = req.params.id;
     getMyPoll(admin)
     .then( (data) => {
-      res.status(200).render("mypolls", data)
+    res.status(200).json(data)
+      // render("mypolls", data)
     })
     .catch((err) => {
       console.log(err)
@@ -75,3 +76,6 @@ module.exports = (knex) => {
 
   return router;
 }
+
+
+
