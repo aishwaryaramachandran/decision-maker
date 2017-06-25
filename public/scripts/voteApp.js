@@ -1,5 +1,5 @@
 $(function() {
-  
+
   function submitSuccess()  {
     //show the text
       $('<span/>', {

@@ -11,6 +11,7 @@ module.exports = (knex) => {
       .then( (id) => {
         return Promise.all(obj.ranks.map( function(value, index) {
           return knex('vote_options')
+          .returning('id')
           .insert({rank: index + 1,
                    vote_id: parseFloat(id),
                    option_id: value
@@ -30,9 +31,6 @@ module.exports = (knex) => {
         knex('polls')
           .where("share_code", shareCode)
           .then( (rows) => {
-            // if (!rows.length){
-            //   throw new Error(`No poll found for share code: ${shareCode}`)
-            // }
             const poll = rows[0];
             data.poll = poll;
             pollOptions(poll).map((option, index) => {
