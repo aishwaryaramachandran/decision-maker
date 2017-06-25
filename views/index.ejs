@@ -7,10 +7,8 @@
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <!--google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,700,700i" rel="stylesheet">
-    <!--App CSS-->
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/navbar.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/new-conundrum.css" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    
     <!--External JS-->
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
@@ -18,28 +16,34 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!--App CSS-->
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/navbar.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/new-conundrum.css" type="text/css" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
   <%- include('partials/navbar') %>
   <section id="conundrum-container">
-    <h2>Feeling Indecisive?</h2>
+    <div class="pollTitle">
+    <h2>Feeling Indecisive?</h2></div>
     <form id='newPoll' method="post" action="/mypoll/create">
-      <label for="email">Enter your Email:</label>
+      <label class="pollLabel" for="email">Enter your Email :</label><br>
       <input type="text" name="email" placeholder="your.email@email.com"><br>
-      <label for="text">Enter a Title:</label>
-      <input type="text" name="title" placeholder="Title"><br>
-      <label for="text">Describe your Conundrum</label>
-      <textarea type="text" name="description" placeholder="What's the deal?"></textarea><br>
-      <label for="text">Option A:</label>
-      <input type="text" name="optionA" placeholder="Option A"><br>
-      <label for="text">Option B:</label>
-      <input type="text" name="optionB" placeholder="Option B"><br>
-      <label for="text">Option C:</label>
-      <input type="text" name="optionC" placeholder="Option C"><br>
-      <label for="text">Option D:</label>
-      <input type="text" name="optionD" placeholder="Option D"><br>
-      <input type="submit" value="Submit">
+      <label class="pollLabel" for="text">Enter a Title :</label><br>
+      <input type="text" name="title" placeholder="what do you like doing on a friday night?"><br>
+      <label class="pollLabel" for="text">Describe your Conundrum</label><br>
+      <textarea type="text" name="description" placeholder="Hey guys, I am looking for a new hobby on weekend. I am considering of hobbies as bottom of this descripton. Please drop and drop all hobby lists next to ranking section"></textarea><br>
+      <label class="pollLabel" for="text">Option A :</label><br>
+      <input type="text" name="optionA" placeholder="Learning a new instrument"><br>
+      <label class="pollLabel" for="text">Option B :</label><br>
+      <input type="text" name="optionB" placeholder="Reading a book"><br>
+      <label class="pollLabel" for="text">Option C :</label><br>
+      <input type="text" name="optionC" placeholder="Exercising a new sport"><br>
+      <label class="pollLabel" for="text">Option D :</label><br>
+      <input type="text" name="optionD" placeholder="Looking for a place which is the hottest around the town"><br>
+      <input type="submit" value="Submit" class="pollSubmit">
     </form>
   </section>
   <%- include('partials/footer') %>

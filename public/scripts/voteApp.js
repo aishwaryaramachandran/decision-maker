@@ -28,23 +28,6 @@ $(function() {
     }).done(function () {
       $(this).val('');
       console.log($(this));
-    })
-  
+    }) 
   });
 });
-
-//  function makeTemplate() {
-//     //ajax get
-//     console.log("chris")
-//     $.ajax({
-//       method: 'GET',
-//       url: '/vote/:id',
-//       dataType: "json"
-//     }).done(function (options) {
-//       console.log("chris2", options);
-//       makeRankingAndOptions(options);
-//     }).catch(err => {
-//       console.log("err", err);
-//     });
-//   }
-//   makeTemplate()
