@@ -6,7 +6,7 @@ $(function() {
         text: "Thank you for voting!"
       }).appendTo('#voteSection')
   }
-  
+
   $('#voteForm').on('submit', function(event) {
     event.preventDefault();
     $.ajax({
