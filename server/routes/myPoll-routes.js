@@ -17,6 +17,16 @@ module.exports = (knex) => {
     }
     return result;
   }
+  // Takes in each voters rankings for an option and the total number of options
+  // Returns a score used to rank each option
+  function score (ranks, options) {
+    let finalScore = 0;
+    ranks.forEach( (rank) => {
+      let score = options - rank;
+      finalScore += score
+    })
+  return finalScore;
+  }
 
   // Staging area for URLS
   const urls = {
@@ -64,7 +74,15 @@ module.exports = (knex) => {
     const admin = req.params.id;
     getMyPoll(admin)
     .then( (data) => {
-      res.status(200).render("mypolls", data)
+      res.status(200).render("mypolls", {
+        poll: data.poll,
+        options: data.options.map( (value) => {
+                   return { description: value.description,
+                            score: score(value.rank, data.poll.totalOptions)
+                          }
+      })
+    })
+
     })
     .catch((err) => {
       console.log(err)
