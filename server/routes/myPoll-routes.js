@@ -43,6 +43,20 @@ module.exports = (knex) => {
       shareCode: share
     };
 
+    const api_key = 'key-d24ef8147e3c25109525aedc022e0926';
+    const domain = 'sandboxb3fa38b723314d6689d82d7263fbe595.mailgun.org';
+    const mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
+    const data = {
+          from: '<postmaster@sandboxb3fa38b723314d6689d82d7263fbe595.mailgun.org>',
+          to: req.body.email,
+          subject: req.body.title,
+          text: urls.voteUrl
+        };
+
+    mailgun.messages().send(data, function (error, body) {
+      console.log(body);
+    });
+
     createMyPoll(newPoll)
     .then( () => {
       res.status(201).send()
@@ -51,6 +65,7 @@ module.exports = (knex) => {
       console.log(err)
       res.status(400).send("error")
     })
+
   });
 
 
