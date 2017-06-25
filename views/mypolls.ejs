@@ -16,7 +16,7 @@
         <script type="text/javascript" src="/scripts/pollApp.js"></script>
     </head>
 
-   <body>
+  <body>
     <%- include('partials/navbar')%>
     <div id='result'>
         <section id="results-message">
@@ -28,9 +28,8 @@
         <div>
             Here are you results:
             <ol>
-                <% poll.rank.forEach(function(value){ %>
-                console.log(value);
-                <li> <%= value %> </li>
+                <% options.forEach(function(value){ %>
+                <li> <%=value.description %> </li>
                 <% }); %>
             </ol>
         <button id="update"type="button">Update</button>

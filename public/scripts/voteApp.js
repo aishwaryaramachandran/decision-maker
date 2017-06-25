@@ -28,7 +28,6 @@ $(function() {
     }).done(function () {
       $(this).val('');
       console.log($(this));
-    })
-
+    }) 
   });
 });
