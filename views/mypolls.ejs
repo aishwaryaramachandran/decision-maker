@@ -26,10 +26,11 @@
         </section>
         <section id="result-rank">
         <div>
-            Here are you results: 
+            Here are you results:
             <ol>
-                <% options.forEach(function(value){ %>
-                <li> <%=value.description %> </li>
+                <% poll.rank.forEach(function(value){ %>
+                console.log(value);
+                <li> <%= value %> </li>
                 <% }); %>
             </ol>
         <button id="update"type="button">Update</button>
@@ -37,6 +38,5 @@
         </section>
     </div>
     <%- include('partials/footer')%>
-   
     </body>
 </html>

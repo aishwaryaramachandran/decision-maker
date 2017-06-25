@@ -1,17 +1,26 @@
 $(function() {
 
   function renderURLs(urlData) {
-    $('<a>', {
+    //show the two links : admin, vote
+    const $adminURL = $('<a>', {
       class: 'adminUrl',
       href: urlData.myUrl,
       text: 'Here is your new Poll!'
-    }).appendTo('body');
-      $('<a>', {
+    })
+    const $voteURL = $('<a>', {
       class: 'voterUrl',
       href: urlData.voteUrl,
       text: 'Give this link to your voters!'
-    }).appendTo('body');
+    })
+    const $adminButton = $('<button>');
+    const $voteButton =  $('<button>');
+    const $br = $('<br>');
+    $adminButton.append($adminURL);
+    $voteButton.append($voteURL);
+    $('body').append($adminButton).append($br).append($voteButton);
   };
+
+
 
   function getURL () {
     //GET ajax and return renderURls function
