@@ -20,15 +20,15 @@
     <%- include('partials/navbar')%>
     <div id='result'>
         <section id="results-message">
-        <p class="resultTitle"><%= polls.title %></p>
+        <p class="resultTitle"><%= poll.title %></p>
         <p><strong>Description: </strong></p>
-         <p class="resultDescription"><%= polls.description %></p>
+         <p class="resultDescription"><%= poll.description %></p>
         </section>
         <section id="result-rank">
         <div>
             Here are you results:
             <ol>
-                <% polls.rank.forEach(function(value){ %>
+                <% poll.rank.forEach(function(value){ %>
                 console.log(value);
                 <li> <%= value %> </li>
                 <% }); %>

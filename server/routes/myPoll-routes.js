@@ -53,7 +53,7 @@ module.exports = (knex) => {
     })
   });
 
-  
+
   // Returns URL
   router.get("/create", (req, res) => {
     res.status(200).json(urls);
@@ -62,7 +62,6 @@ module.exports = (knex) => {
   // Gets poll results for admin
   router.get("/:id", (req, res) => {
     const admin = req.params.id;
-
     getMyPoll(admin)
     .then( (data) => {
       res.status(200).render("mypolls", data)
