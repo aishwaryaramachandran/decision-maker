@@ -23,20 +23,33 @@
   <body>
     <%- include('partials/navbar') %>
     <section id="voteSection">
-      <p class="voteTitle">title</p>
+      <p class="voteTitle"><%= poll.title %></p>
       <p><strong>Description: </strong></p>
-      <p class="voteDescription">polls.description</p>
-      <form id='voteForm' method="POST" action="/vote/:id">
+      <p class="voteDescription"><%= poll.description %></p>
+      <form id="voteForm" method="POST" action="/vote/:id">
         <label for="voteName">Enter your Name:</label>
         <input id="voteName" type="text" name="voteName" class="voteInput">
         <ol>
-          
+          <li class="ranking-target">
+            <input type="hidden" name="rankings[1]" value="">
+          </li>
+          <li class="ranking-target">
+            <input type="hidden" name="rankings[2]" value="">
+          </li>
+          <li class="ranking-target">
+            <input type="hidden" name="rankings[3]" value="">
+          </li>
+          <li class="ranking-target">
+            <input type="hidden" name="rankings[4]" value="">
+          </li>
         </ol>
         <ul>
-
+          <% options.forEach(function(value, index) { %>
+            <li><div draggable="true" data-id="<%= value.option.id %>"><%= value.option.description %></div></li>
+          <% }) %>
         </ul>
         <button type="submit" value="Submit">Submit</button>
-        <button id='reset' type="reset" value="Reset">Refresh</button>
+        <button id="reset" type="reset" value="Reset">Refresh</button>
       </form>
     </section>
     <%- include('partials/footer') %>
