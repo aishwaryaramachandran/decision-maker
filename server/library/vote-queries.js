@@ -30,14 +30,14 @@ module.exports = (knex) => {
         knex('polls')
           .where("share_code", shareCode)
           .then( (rows) => {
-            if (!rows.length){
-              throw new Error(`No poll found for share code: ${shareCode}`)
-            }
+            // if (!rows.length){
+            //   throw new Error(`No poll found for share code: ${shareCode}`)
+            // }
             const poll = rows[0];
             data.poll = poll;
             pollOptions(poll).map((option, index) => {
             let optionData = {};
-            optionData[`option${index}`] = option;
+            optionData.option = option;
             data.options[index] = optionData;
             })
             .then(()=> resolve(data))
