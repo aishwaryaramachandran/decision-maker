@@ -28,9 +28,9 @@
         <div>
             Here are you results:
             <ol>
-                <% poll.rank.forEach(function(value){ %>
-                console.log(value);
-                <li> <%= value %> </li>
+                <%options.forEach(function(value){ %>
+                <li> 
+                <%= value.option.description %></li>
                 <% }); %>
             </ol>
         <button id="update"type="button">Update</button>

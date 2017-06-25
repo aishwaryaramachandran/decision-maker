@@ -9,6 +9,19 @@ $(function() {
 
   $('#voteForm').on('submit', function(event) {
     event.preventDefault();
+    var optTarget = $(this).find('option-target');
+    var rankTarget= $('.ranking-target').find('.option-target');
+    console.log(optTarget);
+    console.log(rankTarget);
+    if(rankTarget && optTarget) {
+      alert('Please complete the form');
+      return false;
+    }
+    
+    // if(optTarget) {
+    //   alert('Please use all your options');
+    //   return false;
+    // }
     $.ajax({
       method: 'POST',
       url: '/vote/:id',
