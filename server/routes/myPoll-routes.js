@@ -62,7 +62,7 @@ module.exports = (knex) => {
           from: '<postmaster@sandboxb3fa38b723314d6689d82d7263fbe595.mailgun.org>',
           to: req.body.email,
           subject: "You Just Created A Poll!",
-          text:  `Here is your results page: http://localhost:8080/mypoll/${newPoll.adminCode}`
+          text: `Thank you for using Conundrum! Here is your results page: http://localhost:8080/mypoll/${newPoll.adminCode}. Here is where your friends can vote : http://localhost:8080/vote/${share}`
         }
 
     mailgun.messages().send(data, function (error, body) {

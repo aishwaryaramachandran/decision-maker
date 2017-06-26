@@ -4,7 +4,6 @@
 }
 
 
-
 .pollLabel {
   font-size: 15px;
   margin-bottom: 0px;
@@ -68,12 +67,15 @@
 }
 
 .ranking-target {
+  margin-top: 10px;
+  padding: 10px;
+  font-style: italic;
+  font-weight: bold;
   width: 50%;
   list-style: none;
   margin-left: 22px;
   border: 1px solid black;
   border-radius: 10px;
-  background-color: cornsilk;
 }
 
 /*.emptySpace {
@@ -96,14 +98,18 @@
   margin-right: 29px;
 }
 .option-target {
-  
-  color: white;
-  font-size: 30px;
+
+  color: black;
+  font-size: 1em;
+  border-style: solid;
+  border-width: 1px;
   border-radius: 10px;
+  border-color: black;
   position: static;
   overflow: hidden;
-  border: 1px solid #7BCEEF;
-  background-color: #7BCEEF;
+  background-color: #eee;
+  padding: 5px;
+  margin-bottom: 15px;
 }
 /*.option-target:hover {
   overflow: visible;
@@ -126,10 +132,14 @@
   line-height: 30px;
   padding: 20px;
   background-color: white;
-  height: 820px;
 }
 .submitPosition {
-  margin-left: 30px;
+  margin: 35px;
+}
+
+.resultTitle {
+  border-bottom: 1px black solid;
+  margin-bottom: 50px;
 }
 
 .voteTitle {
@@ -139,15 +149,23 @@
   font-weight: bold;
   text-align: center;
   font-size: 40px;
+  padding-bottom: 15px;
+  margin-bottom: 30px;
 }
 
 .voteDescriptionTitle {
   margin-left: 15px;
+  font-size: 18pt;
 }
 #voteSection .voteInput {
   margin-top: 5px;
   margin-left: 16px;
+  padding-left: 5px;
   width: 70%;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  border-color: black;
+  border-width: 1px;
 }
 
 

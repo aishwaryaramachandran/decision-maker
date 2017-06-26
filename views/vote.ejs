@@ -5,8 +5,11 @@
     <!--External CSS-->
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+
     <!--google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,700,700i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+
 
     <!--External JS-->
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
@@ -26,27 +29,30 @@
     <%- include('partials/navbar') %>
     <section id="voteSection">
       <p class="voteTitle"><%= poll.title %></p>
-      <p class="voteDescriptionTitle"><strong>Description: </strong></p>
-      <textarea type="text" disabled="disabled" name="description" class="voteDescription" value="<%= poll.description.length %>"><%= poll.description %></textarea>
+      <label for="voteDescriptionTitle">Description: </label>
+      <p class="voteDescriptionTitle">
+      <%= poll.description %>
+      </p>
       <form id="voteForm" method="POST" action="/vote/:id">
         <label class="voteName" for="voteName">Enter your Name     : </label><br>
-        <input id="voteName" type="text" name="voteName" class="voteInput" placeholder="Michael">
+        <input id="voteName" type="text" name="voteName" class="voteInput" placeholder="Your Name Here">
         <div class="list">
         <!--<p class="rankingList">Ranking list <div class="test"> / Option list</div></p>-->
 
 
         <ol class="voteList">
           <% options.forEach(function(value, index) { %>
-          <li class="ranking-target"> Rankings <%= index + 1 %>
+          <li class="ranking-target">Drag Choice #<%= index + 1 %> Here!
             <input type="hidden" name="rankings<%= index+1 %>" value="">
             </li><br>
           <% }) %>
         </ol><br>
+        <label for="optionUl">Here Are Your Options:</label>
         <ul class="optionUl">
           <% options.forEach(function(value, index) { %>
             <li data-id="<%= value.id %>" class="optionList"><div draggable="true" data-id="<%= value.id %>" class="option-target">
               <%= value.description %></div></li>
-              
+
           <% }) %>
         </ul><br>
         <p class="submitPosition">
