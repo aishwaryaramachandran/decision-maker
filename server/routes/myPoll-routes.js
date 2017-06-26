@@ -67,10 +67,10 @@ module.exports = (knex) => {
     console.log(body);
   });
 
-    const api_key = 'key-d24ef8147e3c25109525aedc022e0926';
-    const domain = 'sandboxb3fa38b723314d6689d82d7263fbe595.mailgun.org';
-    const mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
-    const data = {
+    var api_key = 'key-d24ef8147e3c25109525aedc022e0926';
+    var domain = 'sandboxb3fa38b723314d6689d82d7263fbe595.mailgun.org';
+    var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
+    var data = {
           from: '<postmaster@sandboxb3fa38b723314d6689d82d7263fbe595.mailgun.org>',
           to: req.body.email,
           subject: req.body.title,

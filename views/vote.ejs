@@ -32,30 +32,23 @@
         <label class="voteName" for="voteName">Enter your Name     : </label><br>
         <input id="voteName" type="text" name="voteName" class="voteInput" placeholder="Michael">
         <div class="list">
-        <p class="rankingList">Ranking list</p>
-        <p class="optionList">Option list</p>
-        </div>
+        <!--<p class="rankingList">Ranking list <div class="test"> / Option list</div></p>-->
+      
+       
         <ol class="voteList">
-          <li class="ranking-target">
-            hello
-            <input type="hidden" name="rankings1" value="">
-          </li>
-          <li class="ranking-target">
-            <input type="hidden" name="rankings2" value="">
-          </li>
-          <li class="ranking-target">
-            <input type="hidden" name="rankings3" value="">
-          </li>
-          <li class="ranking-target">
-            <input type="hidden" name="rankings4" value="">
-          </li>
-        </ol>
-        <ul>
           <% options.forEach(function(value, index) { %>
-            <li data-id="<%= value.option.id %>"><div draggable="true" data-id="<%= value.option.id %>" class="option-target"><%= value.option.description %></div></li>
+          <li class="ranking-target"> Rankings <%= index %>
+            <input type="hidden" name="rankings<%= index+1 %>" value="">
+            </li>
           <% }) %>
-        </ul>
-        <button type="submit" value="Submit">Submit</button>
+        </ol><br>
+        <ul class="optionUl">
+          <% options.forEach(function(value, index) { %>
+            <li data-id="<%= value.id %>" class="optionList"><div draggable="true" data-id="<%= value.id %>" class="option-target">
+              <%= value.description %></div></li>
+          <% }) %>
+        </ul><br>
+        <button class="voteSubmit" type="submit" value="Submit">Submit</button>
         <button id="reset" type="reset" value="Reset">Refresh</button>
       </form>
     </section>
@@ -73,12 +66,13 @@
       });
       document.addEventListener('drop', event => {
         if (event.target.classList.contains('ranking-target')) {
+          dragged.parentNode.removeChild(dragged);
           event.target.appendChild(dragged);
           event.target.querySelector('input').value = dragged.dataset['id'];
         }
-        if (!event.target.classList.contains('option-target')) {
-          event.target.appendChild(dragged);
-        }
+        // if (!event.target.classList.contains('option-target')) {
+        //   event.target.appendChild(dragged);
+        // }
       });
     </script>
   </body>
