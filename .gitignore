@@ -4,3 +4,4 @@ node_modules/
 *.sqlite3
 .DS_Store
 server/.DS_Store
+config.js

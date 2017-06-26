@@ -2,7 +2,7 @@
 "use strict";
 const express = require('express');
 const pollFunctions = require("../library/myPoll-queries.js");
-
+const api_key =  require("../../config.js");
 module.exports = (knex) => {
   const router = express.Router();
 
@@ -52,29 +52,15 @@ module.exports = (knex) => {
       adminCode: admin,
       shareCode: share
     };
-    var api_key = 'key-e0b22302447902e45e7a531ed87e241c';
+
+    
     var domain = 'sandbox35917ab6f63a495f95fa2f7cf334a6f1.mailgun.org';
     var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
-
     var data = {
-    from: '<postmaster@sandbox35917ab6f63a495f95fa2f7cf334a6f1.mailgun.org>',
-    to: newPoll.email,
-    subject: req.body.title,
-    text: newPoll.shareCode
-  };
-
-  mailgun.messages().send(data, function (error, body) {
-    console.log(body);
-  });
-
-    var api_key = 'key-d24ef8147e3c25109525aedc022e0926';
-    var domain = 'sandboxb3fa38b723314d6689d82d7263fbe595.mailgun.org';
-    var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
-    var data = {
-          from: '<postmaster@sandboxb3fa38b723314d6689d82d7263fbe595.mailgun.org>',
+          from: '<postmaster@sandbox35917ab6f63a495f95fa2f7cf334a6f1.mailgun.org>',
           to: req.body.email,
           subject: req.body.title,
-          text: urls.voteUrl
+          text: urls.myUrl
         };
 
     mailgun.messages().send(data, function (error, body) {
