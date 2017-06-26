@@ -10,7 +10,6 @@ module.exports = (knex) => {
   const {postVote, getVote, getEmail} = voteFunctions(knex);
 
   // Posts submitted vote data to database
-  };
   router.post("/:id", (req, res) => {
     const newVote = {
       shareCode: req.params.id,
