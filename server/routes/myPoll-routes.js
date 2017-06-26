@@ -3,6 +3,8 @@
 const express = require('express');
 const pollFunctions = require("../library/myPoll-queries.js");
 const api_key =  require("../../config.js");
+const domain = "mg.conundrum";
+const mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
 module.exports = (knex) => {
   const router = express.Router();
 
@@ -53,15 +55,11 @@ module.exports = (knex) => {
       shareCode: share
     };
 
-
-    const domain = 'sandbox53fe720e39454060b4b35df53a906f63.mailgun.org';
-    const mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
     const data = {
-          from: '<postmaster@sandbox53fe720e39454060b4b35df53a906f63.mailgun.org>',
+          from: 'Conundrum Prime <postmaster@mg.conundrum>',
           to: req.body.email,
-          subject: "You Just Created a New Poll!",
-          text:  `Here is your results page: ${urls.myUrl}
-Here is the voting page for your friends: ${urls.myUrl}`
+          subject: req.body.title,
+          text: `Thank you for using Conundrum! Send this link to your friends -> ${urls.voteUrl}. Check your results with this link -> ${urls.myUrl}.`
         };
 
     mailgun.messages().send(data, function (error, body) {
