@@ -67,13 +67,27 @@
   font-style: italic;
 }
 
+.rankingList {
+  margin-left: 17px;
+  float: left;
+}
+
+.optionList {
+  float: right;
+}
+
+.voteList {
+  margin-top: 5px;
+}
+
 #voteSection {
   border: 1px solid grey;
   border-radius: 10px;
-  width: 400px;
+  width: 500px;
   margin: 70px auto 0 auto;
   line-height: 30px;
   padding: 20px;
+  background-color: white;
 }
 
 .voteTitle {
@@ -81,19 +95,32 @@
   border-bottom-style: solid;
   border-bottom-color: grey;
   font-weight: bold;
+  text-align: center;
+  font-size: 40px;
 }
 
+.voteDescriptionTitle {
+  margin-left: 15px;
+}
 #voteSection .voteInput {
   margin-top: 5px;
-  background-color: #eeeeee;
-  border-color: grey;
-  border-radius: 10px;
+  margin-left: 16px;
+  width: 70%;
 }
 
+
+.voteName {
+  margin-left: 17px;
+}
 #voteSection .voteDescription {
+  line-height: 23px;
   border: 1px solid black;
   border-radius: 3px;
   background-color: white;
+  width: 90%;
+  height: 130px;
+  margin-left: 15px;
+  resize: none;
 }
 
 #voteSection .voteContent {

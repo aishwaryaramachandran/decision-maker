@@ -6,6 +6,12 @@ $(function() {
         text: "Thank you for voting!"
       }).appendTo('#voteSection')
   }
+  
+
+  $('.voteDescription').on('click', function(evt) {
+    console.log("hello")
+    event.preventDefault();
+  })
 
   $('#voteForm').on('submit', function(event) {
     event.preventDefault();

@@ -26,13 +26,18 @@
     <%- include('partials/navbar') %>
     <section id="voteSection">
       <p class="voteTitle"><%= poll.title %></p>
-      <p><strong>Description: </strong></p>
-      <p class="voteDescription"><%= poll.description %></p>
+      <p class="voteDescriptionTitle"><strong>Description: </strong></p>
+      <textarea type="text" disabled="disabled" name="description" class="voteDescription" value="<%= poll.description.length %>"><%= poll.description %></textarea>
       <form id="voteForm" method="POST" action="/vote/:id">
-        <label for="voteName">Enter your Name:</label>
-        <input id="voteName" type="text" name="voteName" class="voteInput">
-        <ol>
+        <label class="voteName" for="voteName">Enter your Name     : </label><br>
+        <input id="voteName" type="text" name="voteName" class="voteInput" placeholder="Michael">
+        <div class="list">
+        <p class="rankingList">Ranking list</p>
+        <p class="optionList">Option list</p>
+        </div>
+        <ol class="voteList">
           <li class="ranking-target">
+            hello
             <input type="hidden" name="rankings1" value="">
           </li>
           <li class="ranking-target">

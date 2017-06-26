@@ -42,6 +42,20 @@ module.exports = (knex) => {
       adminCode: admin,
       shareCode: share
     };
+    var api_key = 'key-e0b22302447902e45e7a531ed87e241c';
+    var domain = 'sandbox35917ab6f63a495f95fa2f7cf334a6f1.mailgun.org';
+    var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
+
+    var data = {
+    from: '<postmaster@sandbox35917ab6f63a495f95fa2f7cf334a6f1.mailgun.org>',
+    to: newPoll.email,
+    subject: req.body.title,
+    text: newPoll.shareCode
+  };
+
+  mailgun.messages().send(data, function (error, body) {
+    console.log(body);
+  });
 
     createMyPoll(newPoll)
     .then( () => {
