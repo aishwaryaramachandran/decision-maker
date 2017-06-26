@@ -17,7 +17,7 @@ $(function() {
     const $br = $('<br>');
     $adminButton.append($adminURL);
     $voteButton.append($voteURL);
-    $('body').append($adminButton).append($br).append($voteButton);
+    $('#links').append($adminButton).append($br).append($voteButton);
   };
 
 
