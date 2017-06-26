@@ -10,9 +10,6 @@ module.exports = (knex) => {
   const {postVote, getVote, getEmail} = voteFunctions(knex);
 
   // Posts submitted vote data to database
-  const urls = {
-    myUrl: "",
-    voteUrl: ""
   };
   router.post("/:id", (req, res) => {
     const newVote = {
