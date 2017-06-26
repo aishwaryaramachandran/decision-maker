@@ -53,11 +53,11 @@ module.exports = (knex) => {
       shareCode: share
     };
 
-
-    const domain = 'sandboxb3fa38b723314d6689d82d7263fbe595.mailgun.org';
-    const mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
-    const data = {
-          from: '<postmaster@sandboxb3fa38b723314d6689d82d7263fbe595.mailgun.org>',
+    
+    var domain = 'sandbox35917ab6f63a495f95fa2f7cf334a6f1.mailgun.org';
+    var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
+    var data = {
+          from: '<postmaster@sandbox35917ab6f63a495f95fa2f7cf334a6f1.mailgun.org>',
           to: req.body.email,
           subject: "You Just Created a New Poll!",
           text:  `Here is your results page: ${urls.myUrl}
