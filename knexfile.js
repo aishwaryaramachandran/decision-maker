@@ -37,4 +37,4 @@ module.exports = {
     ssl:true
   }
 
-};
+}
