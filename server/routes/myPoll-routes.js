@@ -2,7 +2,7 @@
 "use strict";
 const express = require('express');
 const pollFunctions = require("../library/myPoll-queries.js");
-// const api_key =  require("../../config.js");
+const api_key =  require("../../config.js");
 module.exports = (knex) => {
   const router = express.Router();
 
@@ -54,19 +54,19 @@ module.exports = (knex) => {
     };
 
 
-//     var domain = 'sandbox35917ab6f63a495f95fa2f7cf334a6f1.mailgun.org';
-//     var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
-//     var data = {
-//           from: '<postmaster@sandbox35917ab6f63a495f95fa2f7cf334a6f1.mailgun.org>',
-//           to: req.body.email,
-//           subject: "You Just Created a New Poll!",
-//           text:  `Here is your results page: ${urls.myUrl}
-// Here is the voting page for your friends: ${urls.myUrl}`
-//         };
+    var domain = 'sandbox35917ab6f63a495f95fa2f7cf334a6f1.mailgun.org';
+    var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
+    var data = {
+          from: '<postmaster@sandbox35917ab6f63a495f95fa2f7cf334a6f1.mailgun.org>',
+          to: req.body.email,
+          subject: "You Just Created a New Poll!",
+          text:  `Here is your results page: ${urls.myUrl}
+Here is the voting page for your friends: ${urls.myUrl}`
+        };
 
-//     mailgun.messages().send(data, function (error, body) {
-//       console.log(body);
-//     });
+    mailgun.messages().send(data, function (error, body) {
+      console.log(body);
+    });
 
     createMyPoll(newPoll)
     .then( () => {
