@@ -17,14 +17,13 @@ $(function() {
     const $br = $('<br>');
     $adminButton.append($adminURL);
     $voteButton.append($voteURL);
-    $('body').append($adminButton).append($br).append($voteButton);
+    $('#links').append($adminButton).append($br).append($voteButton);
   };
 
 
 
   function getURL () {
     //GET ajax and return renderURls function
-    console.log("chris2")
     $.ajax({
         url: '/mypoll/create',
         method: 'GET',

@@ -37,15 +37,16 @@
        
         <ol class="voteList">
           <% options.forEach(function(value, index) { %>
-          <li class="ranking-target"> Rankings <%= index %>
+          <li class="ranking-target"> Rankings <%= index + 1 %>
             <input type="hidden" name="rankings<%= index+1 %>" value="">
-            </li>
+            </li><br>
           <% }) %>
         </ol><br>
         <ul class="optionUl">
           <% options.forEach(function(value, index) { %>
             <li data-id="<%= value.id %>" class="optionList"><div draggable="true" data-id="<%= value.id %>" class="option-target">
               <%= value.description %></div></li>
+              
           <% }) %>
         </ul><br>
         <p class="submitPosition">

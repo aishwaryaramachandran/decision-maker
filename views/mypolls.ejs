@@ -18,30 +18,34 @@
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
     <link rel="stylesheet" href="/styles/navbar.css" type="text/css" />
     <link rel="stylesheet" href="/styles/new-conundrum.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/polls.css" type="text/css" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
 
   <body>
     <%- include('partials/navbar')%>
-    <div class="container-fluid" id='result'>
-        <section id="results-message">
-        <p class="resultTitle"><%= poll.title %></p>
-        <p><strong>Description: </strong></p>
-         <p class="resultDescription"><%= poll.description %></p>
-        </section>
-        <section id="result-rank">
-        <div>
-            Here are you results:
-            <ul id="list-group" class ="list-group">
-                <%options.forEach(function(value, index){ %>
-                <li id="list-group-item" class="list-group-item" value='<%=value.score %>'> 
-                <%= value.description %><span class="badge">Rank <%= index + 1 %> </span></li>
-                <% }); %>
-            </ul>
-        <button id="update"type="button">Update</button>
-        </div>
-        </section>
+    <div class="container-fluid panel panel default" id='result'>
+            <section class="panel-heading"id="results-message">
+            <p class="h1 resultTitle"><%= poll.title %></p>
+            <p><strong>Description: </strong></p>
+            <textarea type="text" disabled="disabled" name="description" class="h2 resultDescription"><%= poll.description %></textarea>
+            </section>
+            <section id="result-rank">
+            <div class="panel-body">
+                Here are you results:
+                <ul id="list-group" class ="list-group">
+                    <%options.forEach(function(value, index){ %>
+                    <li id="list-group-item" class="list-group-item" value='<%=value.score %>'> 
+                    <%= value.description %><span class="badge">Rank: <%= index +1 %></span></li>
+                    <% if(index == 1) { %>
+                    <span class="badge">Rank: <%= index %> <img src='http://www.clker.com/cliparts/v/B/x/f/Y/R/gold-crown.svg'></span>
+                    <% } %>
+                    <% }); %>
+                </ul>
+            </div>
+            </section>
+    </div>        
     </div>
     <%- include('partials/footer')%>
     </body>
