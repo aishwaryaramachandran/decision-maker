@@ -26,10 +26,14 @@ module.exports = {
     client: 'postgresql',
     debug: true,
     connection: process.env.DB_URL,
+    pool: {
+      min: 2,
+      max: 10
+    },
     migrations: {
       directory:'./db/migrations'
     },
-    ssl: true
+    ssl:true
   }
 
 };
