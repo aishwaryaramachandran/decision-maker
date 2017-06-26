@@ -1,6 +1,7 @@
 $(function() {
 
   function submitSuccess()  {
+    console.log("chris3")
     //show the text
       $('<span/>', {
         text: "Thank you for voting!"
@@ -9,10 +10,12 @@ $(function() {
   
 
   $('.voteDescription').on('click', function(evt) {
-    console.log("hello")
     event.preventDefault();
   })
 
+  $('#reset').on('click', function(evt) {
+    location.reload();
+  });
   $('#voteForm').on('submit', function(event) {
     event.preventDefault();
     // var optTarget = $(this).find('option-target');
@@ -28,25 +31,15 @@ $(function() {
     //   alert('Please use all your options');
     //   return false;
     // }
+    console.log("chris");
     $.ajax({
       method: 'POST',
       url: '/vote/:id',
       data: $(this).serialize()
     }).done(function () {
+      console.log("chris2")
       $('#voteForm').slideUp();
       submitSuccess();
       });
-  });
-  $('#reset').on('click', function(event) {
-    //refresh the page
-    console.log("chirs")
-    $.ajax({
-      method: 'GET',
-      url: '/vote/:id',
-      dataType: 'json'
-    }).done(function () {
-      $(this).val('');
-      console.log($(this));
-    }) 
   });
 });

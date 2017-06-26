@@ -34,9 +34,9 @@
         <div>
             Here are you results:
             <ul id="list-group" class ="list-group">
-                <%options.forEach(function(value){ %>
+                <%options.forEach(function(value, index){ %>
                 <li id="list-group-item" class="list-group-item" value='<%=value.score %>'> 
-                <%= value.description %><span class="badge"><%=value.score%> </span></li>
+                <%= value.description %><span class="badge">Rank <%= index + 1 %> </span></li>
                 <% }); %>
             </ul>
         <button id="update"type="button">Update</button>

@@ -92,6 +92,13 @@
   margin-right: 30px;
   margin-left: 30px;
   clear: both;
+  position: absolute;
+}
+
+.voteReset {
+  margin-left: 100px;
+  margin-top: 20px;
+  position: absolute;
 }
 
 .voteHeight {
@@ -113,6 +120,7 @@
   border-radius: 10px;
   line-height: 100px;
   position: static;
+  text-align: center;
 }
 .option-target:after {
   clear: both;
@@ -130,6 +138,11 @@
   padding: 20px;
   background-color: white;
   height: 700px;
+}
+.submitPosition {
+  margin-top: 70px;
+  position: relative;
+  margin-left: 30px;
 }
 
 .voteTitle {
