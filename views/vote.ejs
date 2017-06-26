@@ -47,7 +47,7 @@
         </ol>
         <ul>
           <% options.forEach(function(value, index) { %>
-            <li data-id="<%= value.option.id %>"><div draggable="true" data-id="<%= value.option.id %>" class="option-target"><%= value.option.description %></div></li>
+            <li data-id="<%= value.id %>"><div draggable="true" data-id="<%= value.id %>" class="option-target"><%= value.description %></div></li>
           <% }) %>
         </ul>
         <button type="submit" value="Submit">Submit</button>

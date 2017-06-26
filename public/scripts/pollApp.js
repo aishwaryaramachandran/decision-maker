@@ -1,32 +1,8 @@
-// $(function() {
+$(function() {
+    const emp = [];
+    $('#list-group').children('#list-group-item').sort(function(a, b) {
+        return $(b).val() - $(a).val();
+    }).appendTo('#list-group');
 
-//     function toggleForm() {
+});
 
-//     }
-
-
-
-//     function getResults() {
-//         $.ajax({
-//             url: '/polls/:id',
-//             method: 'GET',
-//             data: 'json'
-//         }).done()
-//     }
-
-
-//     $('#update').click(function(event) {
-//         event.preventDefault();
-//         $('#results').toggle('fast false', function(){
-            
-//         })
-
-
-//     });
-
-
-
-
-
-
-})
