@@ -32,10 +32,15 @@ module.exports = (knex) => {
           .where("share_code", shareCode)
           .then( (rows) => {
             const poll = rows[0];
-            data.poll = poll;
+            data.poll = {
+                          title: poll.title,
+                          description: poll.description
+                        };
             pollOptions(poll).map((option, index) => {
-            let optionData = {};
-            optionData.option = option;
+            let optionData = {
+                              id: option.id,
+                              description: option.description
+                             };
             data.options[index] = optionData;
             })
             .then(()=> resolve(data))
