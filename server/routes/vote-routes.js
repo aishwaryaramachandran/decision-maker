@@ -39,13 +39,14 @@ module.exports = (knex) => {
     getEmail(newVote.shareCode)
     .then(()=>{
      const admin = getEmail(newVote.shareCode).admin
-    const domain = 'sandboxb3fa38b723314d6689d82d7263fbe595.mailgun.org';
+    const domain = 'sandbox53fe720e39454060b4b35df53a906f63.mailgun.org';
     const mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
     const data = {
-          from: '<postmaster@sandboxb3fa38b723314d6689d82d7263fbe595.mailgun.org>',
-          to: getEmail.email,
-          subject: "Someone Just Voted on Your Poll!",
-          text: `Check out your results at http://localhost:8080/mypoll/${admin}`
+          from: '<postmaster@sandbox53fe720e39454060b4b35df53a906f63.mailgun.org>',
+          to: req.body.email,
+          subject: "You Just Created a New Poll!",
+          text:  `Here is your results page: ${urls.myUrl}
+Here is the voting page for your friends: ${urls.myUrl}`
         };
 
     mailgun.messages().send(data, function (error, body) {
