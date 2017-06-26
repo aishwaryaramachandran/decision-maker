@@ -24,7 +24,6 @@ $(function() {
 
   function getURL () {
     //GET ajax and return renderURls function
-    console.log("chris2")
     $.ajax({
         url: '/mypoll/create',
         method: 'GET',

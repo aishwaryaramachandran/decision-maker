@@ -71,10 +71,14 @@
 }
 
 .poll-compose img {
-    height: 1.3em;
-    width: 1.3em;
-    margin-left: auto;
-    margin-right: auto;
+  height: 1.3em;
+  width: 1.3em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.navbar-inverse {
+  height: 100px;
 }
 
 .navbar-inverse .navbar-text {
