@@ -2,7 +2,7 @@
 "use strict";
 const express = require('express');
 const pollFunctions = require("../library/myPoll-queries.js");
-// const api_key =  require("../../config.js");
+const api_key =  require("../../config.js");
 module.exports = (knex) => {
   const router = express.Router();
 
@@ -54,18 +54,18 @@ module.exports = (knex) => {
     };
 
 
-    // const domain = 'sandboxb3fa38b723314d6689d82d7263fbe595.mailgun.org';
-    // const mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
-    // const data = {
-    //       from: '<postmaster@sandboxb3fa38b723314d6689d82d7263fbe595.mailgun.org>',
-    //       to: req.body.email,
-    //       subject: req.body.title,
-    //       text: urls.voteUrl
-    //     };
+    const domain = 'sandboxb3fa38b723314d6689d82d7263fbe595.mailgun.org';
+    const mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
+    const data = {
+          from: '<postmaster@sandboxb3fa38b723314d6689d82d7263fbe595.mailgun.org>',
+          to: req.body.email,
+          subject: req.body.title,
+          text: urls.voteUrl
+        };
 
-    // mailgun.messages().send(data, function (error, body) {
-    //   console.log(body);
-    // });
+    mailgun.messages().send(data, function (error, body) {
+      console.log(body);
+    });
 
     createMyPoll(newPoll)
     .then( () => {
