@@ -1,5 +1,3 @@
-//NOT FINISHED
-
 module.exports = (knex) => {
   const voteQueries = {};
 
@@ -19,6 +17,22 @@ module.exports = (knex) => {
           }))
       })
     }
+
+    voteQueries.getEmail = function(code){
+      return new Promise((resolve, reject) => {
+      const emailData = {};
+      knex('polls')
+      .where('share_code', code)
+      .then( (rows) => {
+          emailData = {
+          email: rows[0].email,
+          admin: rows[0].admin_code
+        }
+        .then(()=> resolve(emailData))
+        .catch(reject);
+    })
+  });
+}
 
     function pollOptions (poll) {
     return knex('options')

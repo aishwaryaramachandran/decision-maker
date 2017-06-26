@@ -59,8 +59,9 @@ module.exports = (knex) => {
     const data = {
           from: '<postmaster@sandboxb3fa38b723314d6689d82d7263fbe595.mailgun.org>',
           to: req.body.email,
-          subject: req.body.title,
-          text: urls.myUrl
+          subject: "You Just Created a New Poll!",
+          text:  `Here is your results page: ${urls.myUrl}
+Here is the voting page for your friends: ${urls.myUrl}`
         };
 
     mailgun.messages().send(data, function (error, body) {
