@@ -3,21 +3,16 @@ const obj = {};
 
   obj.createMyPoll = function (object){
   //POLL FUNCTION TO CREATE A DB ENTRY FOR A NEW POLL
-  return knex('creators')
-    .insert({email: object.email})
-    .returning('id')
-    .then(function (id) {
       return knex('polls')
         .insert({
+          email:object.email,
           title: object.title,
           description: object.description,
           admin_code: object.adminCode,
           share_code: object.shareCode,
-          creator_id: parseFloat(id)
         })
         .returning('id')
-    })
-    .then(function(id){
+        .then(function(id){
       return Promise.all(object.options.map((item) => {
           return knex('options')
             .insert({
@@ -52,21 +47,26 @@ const obj = {};
           }
           const poll = rows[0];
 
-          data.poll = poll;
+          data.poll = {
+                      title: poll.title,
+                      description: poll.description
+                      };
 
-          pollOptions(poll).map((option, index) => {
-            let optionData = {};
-            optionData.option = option;
-            optionData.vote_options = [];
+          return pollOptions(poll).map((option, index, array) => {
+            let optionData = {
+                              description: option.description,
+                              rank: []
+                             };
             data.options[index] = optionData;
-            optionVotes(option).map((option_vote) => {
-              optionData.vote_options.push(option_vote);
+            data.poll.totalOptions = array;
+            return optionVotes(option).map((option_vote) => {
+              optionData.rank.push(option_vote.rank);
             })
-            .then(() => resolve(data))
             .catch(reject)
           })
           .catch(reject);
         })
+        .then(() => resolve(data))
         .catch(reject)
     })
   }

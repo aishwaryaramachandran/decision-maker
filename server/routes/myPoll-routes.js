@@ -17,6 +17,16 @@ module.exports = (knex) => {
     }
     return result;
   }
+  // Takes in each voters rankings for an option and the total number of options
+  // Returns a score used to rank each option
+  function score (ranks, options) {
+    let finalScore = 0;
+    ranks.forEach( (rank) => {
+      let score = options - rank;
+      finalScore += score
+    })
+  return finalScore;
+  }
 
   // Staging area for URLS
   const urls = {
@@ -57,6 +67,20 @@ module.exports = (knex) => {
     console.log(body);
   });
 
+    const api_key = 'key-d24ef8147e3c25109525aedc022e0926';
+    const domain = 'sandboxb3fa38b723314d6689d82d7263fbe595.mailgun.org';
+    const mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
+    const data = {
+          from: '<postmaster@sandboxb3fa38b723314d6689d82d7263fbe595.mailgun.org>',
+          to: req.body.email,
+          subject: req.body.title,
+          text: urls.voteUrl
+        };
+
+    mailgun.messages().send(data, function (error, body) {
+      console.log(body);
+    });
+
     createMyPoll(newPoll)
     .then( () => {
       res.status(201).send()
@@ -65,6 +89,7 @@ module.exports = (knex) => {
       console.log(err)
       res.status(400).send("error")
     })
+
   });
 
 
@@ -78,7 +103,15 @@ module.exports = (knex) => {
     const admin = req.params.id;
     getMyPoll(admin)
     .then( (data) => {
-      res.status(200).render("mypolls", data)
+      res.status(200).render("mypolls", {
+        poll: data.poll,
+        options: data.options.map( (value) => {
+                   return { description: value.description,
+                            score: score(value.rank, data.poll.totalOptions)
+                          }
+      })
+    })
+
     })
     .catch((err) => {
       console.log(err)
