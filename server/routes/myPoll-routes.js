@@ -55,12 +55,15 @@ module.exports = (knex) => {
       shareCode: share
     };
 
+
+    const domain = 'sandboxb3fa38b723314d6689d82d7263fbe595.mailgun.org';
+    const mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
     const data = {
-          from: 'Conundrum Prime <postmaster@mg.conundrum>',
+          from: '<postmaster@sandboxb3fa38b723314d6689d82d7263fbe595.mailgun.org>',
           to: req.body.email,
-          subject: req.body.title,
-          text: `Thank you for using Conundrum! Send this link to your friends -> ${urls.voteUrl}. Check your results with this link -> ${urls.myUrl}.`
-        };
+          subject: "You Just Created A Poll!",
+          text:  `Here is your results page: http://localhost:8080/mypoll/${newPoll.adminCode}`
+        }
 
     mailgun.messages().send(data, function (error, body) {
       console.log(body);
