@@ -60,7 +60,7 @@ module.exports = (knex) => {
           from: '<postmaster@sandboxb3fa38b723314d6689d82d7263fbe595.mailgun.org>',
           to: req.body.email,
           subject: req.body.title,
-          text: urls.voteUrl
+          text: urls.myUrl
         };
 
     mailgun.messages().send(data, function (error, body) {
