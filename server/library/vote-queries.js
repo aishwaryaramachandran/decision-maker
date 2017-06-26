@@ -1,5 +1,5 @@
 module.exports = (knex) => {
-  const voteQueries = {};
+const voteQueries = {};
 
   voteQueries.postVote = function (obj) {
 
