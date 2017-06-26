@@ -2,7 +2,7 @@
 "use strict";
 const express = require('express');
 const pollFunctions = require("../library/myPoll-queries.js");
-
+const api_key =  require("../../config.js");
 module.exports = (knex) => {
   const router = express.Router();
 
@@ -53,7 +53,7 @@ module.exports = (knex) => {
       shareCode: share
     };
 
-    const api_key = 'key-d24ef8147e3c25109525aedc022e0926';
+
     const domain = 'sandboxb3fa38b723314d6689d82d7263fbe595.mailgun.org';
     const mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
     const data = {
