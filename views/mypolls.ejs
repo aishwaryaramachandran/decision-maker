@@ -38,9 +38,6 @@
                     <%options.forEach(function(value, index){ %>
                     <li id="list-group-item" class="list-group-item" value='<%=value.score %>'> 
                     <%= value.description %><span class="badge">Rank: <%= index +1 %></span></li>
-                    <% if(index == 1) { %>
-                    <span class="badge">Rank: <%= index %> <img src='http://www.clker.com/cliparts/v/B/x/f/Y/R/gold-crown.svg'></span>
-                    <% } %>
                     <% }); %>
                 </ul>
             </div>

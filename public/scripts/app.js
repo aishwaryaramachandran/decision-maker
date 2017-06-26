@@ -12,8 +12,8 @@ $(function() {
       href: urlData.voteUrl,
       text: 'Give this link to your voters!'
     })
-    const $adminButton = $('<button>');
-    const $voteButton =  $('<button>');
+    const $adminButton = $('<button class="btn btn-primary btn-lg round">');
+    const $voteButton =  $('<button class="btn btn-primary btn-lg round">');
     const $br = $('<br>');
     $adminButton.append($adminURL);
     $voteButton.append($voteURL);
