@@ -54,10 +54,10 @@ module.exports = (knex) => {
     };
 
 
-    const domain = 'sandboxb3fa38b723314d6689d82d7263fbe595.mailgun.org';
+    const domain = 'sandbox53fe720e39454060b4b35df53a906f63.mailgun.org';
     const mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
     const data = {
-          from: '<postmaster@sandboxb3fa38b723314d6689d82d7263fbe595.mailgun.org>',
+          from: '<postmaster@sandbox53fe720e39454060b4b35df53a906f63.mailgun.org>',
           to: req.body.email,
           subject: req.body.title,
           text: urls.myUrl
